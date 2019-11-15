@@ -3,7 +3,7 @@ import React, { Fragment } from "react";
 import Hero from "../components/Hero";
 import Content from "../components/Content";
 
-const Home = () => (
+const Login = () => (
   <Fragment>
     <Hero />
     <hr />
@@ -11,4 +11,4 @@ const Home = () => (
   </Fragment>
 );
 
-export default Home;
+export default Login;

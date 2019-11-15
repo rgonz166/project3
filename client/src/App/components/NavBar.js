@@ -18,7 +18,7 @@ import {
   DropdownItem
 } from "reactstrap";
 
-import { useAuth0 } from "../react-auth0-spa";
+import { useAuth0 } from "../../react-auth0-spa";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,6 +83,13 @@ const NavBar = () => {
                       <FontAwesomeIcon icon="user" className="mr-3" /> Profile
                     </DropdownItem>
                     <DropdownItem
+                      tag={RouterNavLink}
+                      to="/home"
+                      className="dropdown-profile"
+                    >
+                      <FontAwesomeIcon icon="link" className="mr-3" /> List
+                    </DropdownItem>
+                    <DropdownItem
                       id="qsLogoutBtn"
                       onClick={() => logoutWithRedirect()}
                     >
@@ -131,6 +138,14 @@ const NavBar = () => {
                     activeClassName="router-link-exact-active"
                   >
                     Profile
+                  </RouterNavLink>
+                </NavItem>
+                <NavItem>
+                  <FontAwesomeIcon icon="user" className="mr-3" />
+                  <RouterNavLink
+                    to="/home"
+                  >
+                    List
                   </RouterNavLink>
                 </NavItem>
                 <NavItem>
