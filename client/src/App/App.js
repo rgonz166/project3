@@ -11,14 +11,10 @@ import Home from './pages/Home';
 import List from './pages/List';
 import { useAuth0 } from "../react-auth0-spa";
 import history from "./utils/history";
-<<<<<<< HEAD:src/App.js
 import GoogleApiWrapper from './components/googleMaps'
 
 // styles
 import "./App.css";
-=======
-import './App.css';
->>>>>>> master:client/src/App/App.js
 
 // fontawesome
 import initFontAwesome from "./utils/initFontAwesome";
