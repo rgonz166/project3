@@ -15,8 +15,8 @@ const onRedirectCallback = appState => {
 
 render(
     <Auth0Provider
-        domain={'yellow-field-2990.auth0.com'}
-        client_id={'jt12lohjTyFzoQLSHb64m0gojCUmaTmk'}
+        domain={'twilight-wave-5488.auth0.com'}
+        client_id={'rmCKcR4D3Yk7HVYu9N7j-l46R1s0MWw0'}
         redirect_uri={window.location.origin}
         onRedirectCallback={onRedirectCallback}
     >
