@@ -70,11 +70,9 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container} from 'react
                                  </Input>
                             </FormGroup>
                         </Form>
-                        
                         <Button onClick={this.saveAndContinue}>Submit</Button>
                     </Col>
                  </Row>
-                 
             </Container>
         )
     }
