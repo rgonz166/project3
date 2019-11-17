@@ -11,7 +11,9 @@ import Home from './pages/Home';
 import List from './pages/List';
 import { useAuth0 } from "../react-auth0-spa";
 import history from "./utils/history";
-import GoogleApiWrapper from './components/googleMaps'
+import GoogleApiWrapper from './components/googleMaps';
+import BusinessInfo from './pages/BusinessInfo';
+import Landing from './components/Landing';
 
 // styles
 import "./App.css";
@@ -33,9 +35,9 @@ const App = () => {
         <NavBar />
         <Container className="flex-grow-1 mt-5">
           <Switch>
-            <Route path="/" exact component={Login} />
+            <Route path="/" exact component={Landing} />
             <PrivateRoute path="/home" component={Home} />
-            <PrivateRoute path="/list" component={List} />
+            <PrivateRoute path="/list" component={BusinessInfo} />
             <PrivateRoute path="/profile" component={Profile} />
           </Switch>
           <GoogleApiWrapper/>
