@@ -14,6 +14,7 @@ import history from "./utils/history";
 import GoogleApiWrapper from './components/googleMaps';
 import BusinessInfo from './pages/BusinessInfo';
 import Landing from './components/Landing';
+import Menu from './pages/Menu/Menu';
 
 // styles
 import "./App.css";
@@ -38,7 +39,7 @@ const App = () => {
             <Route path="/" exact component={Landing} />
             <PrivateRoute path="/home" component={Home} />
             <PrivateRoute path="/list" component={BusinessInfo} />
-            <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/profile" component={Menu} />
           </Switch>
           <GoogleApiWrapper/>
         </Container>
