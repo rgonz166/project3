@@ -1,15 +1,18 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
+const Thing = mongoose.Types.ObjectId;
 const db = require("../models");
 
 // This file empties the Books collection and inserts the books below
 
 mongoose.connect(
-  process.env.MONGODB_URI ||
+  // process.env.MONGODB_URI ||
   "mongodb://localhost/vendorlist"
 );
 
-const bookSeed = [
+console.log("TEST", Thing);
+
+const vendorSeed = [
   {
     storeName: "Los Tacos",
     owner: "Jose Ruiz",
@@ -136,9 +139,89 @@ const bookSeed = [
   }
 ];
 
+const menuSeed = [
+  {
+    menuName: "El Menu",
+    food: [Thing("000000000000000000000001"), Thing("000000000000000000000002")]
+  },
+  {
+    menuName: "The Menu",
+    food: [Thing("000000000000000000000003"), Thing("000000000000000000000004")]
+  },
+  {
+    menuName: "Echate Algo Guey",
+    food: [Thing("000000000000000000000005"),Thing("000000000000000000000006"),Thing("000000000000000000000007")]
+  }
+];
+
+const foodSeed = [
+  {
+    _id: Thing("000000000000000000000001"),
+    foodName: "Quesadilla",
+    price: 5.00,
+    description: "It's cheese and tortilla."
+  },
+  {
+    _id: Thing("000000000000000000000002"),
+    foodName: "Flan",
+    price: 3.00,
+    description: "God's gift to earth."
+  },
+  {
+    _id: Thing("000000000000000000000003"),
+    foodName: "Tacos Veganos",
+    price: 6.99
+  },
+  {
+    _id: Thing("000000000000000000000004"),
+    foodName: "Tacos De Pollo",
+    price: 2.99
+  },
+  {
+    _id: Thing("000000000000000000000005"),
+    foodName: "Tacos Al Pastor",
+    price: 2.99
+  },
+  {
+    _id: Thing("000000000000000000000006"),
+    foodName: "Tacos De Birria",
+    price: 3.99
+  },
+  {
+    _id: Thing("000000000000000000000007"),
+    foodName: "Tacos De Buche",
+    price: 2.99
+  }
+];
+
 db.Vendor
   .remove({})
-  .then(() => db.Vendor.collection.insertMany(bookSeed))
+  .then(() => db.Vendor.collection.insertMany(vendorSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+
+
+  // Create Menu
+  db.Menu
+  .remove({})
+  .then(() => db.Menu.collection.insertMany(menuSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+
+  // Create Food
+  db.Food
+  .remove({})
+  .then(() => db.Food.collection.insertMany(foodSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);

@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const vendorController = require("../../controllers/vendorController");
 
-// Matches with "/api/books"
+// Matches with "/api/vendor"
 router.route("/")
   .get(vendorController.findAll)
   .post(vendorController.create);
