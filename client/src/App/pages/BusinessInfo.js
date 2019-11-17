@@ -2,15 +2,10 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Row, Col, Container} from 'reactstrap';
 
  class BusinessInfo extends Component {
-    saveAndContinue = (e) => {
+    submit = (e) => {
         e.preventDefault()
     }
-
-    back  = (e) => {
-        e.preventDefault();
-        this.props.prevStep();
-    }
-
+    
     render() {
         const { } = this.props;
         return (
@@ -70,7 +65,7 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container} from 'react
                                  </Input>
                             </FormGroup>
                         </Form>
-                        <Button onClick={this.saveAndContinue}>Submit</Button>
+                        <Button color="success" onClick={this.submit}>Submit</Button>
                     </Col>
                  </Row>
             </Container>
