@@ -6,7 +6,7 @@ const db = require("../models");
 // This file empties the Books collection and inserts the books below
 
 mongoose.connect(
-  // process.env.MONGODB_URI ||
+  process.env.MONGODB_URI ||
   "mongodb://localhost/vendorlist"
 );
 
@@ -17,6 +17,7 @@ const vendorSeed = [
     storeName: "Los Tacos",
     owner: "Jose Ruiz",
     ownderId: "auth0|u9fd8ur932uifeas2",
+    menu: Thing("000000000000000000000001"),
     categories: ["Tacos", "Mexican", "TJ"],
     hashtags: ["#lostacos","#tacos"],
     closingTime: "8pm"
@@ -24,6 +25,7 @@ const vendorSeed = [
   {
     storeName: "The Tacos",
     owner: "Bob Dylan",
+    menu: Thing("000000000000000000000002"),
     ownderId: "auth0|lkdfsnofw99392",
     categories: ["Tacos", "Fancy"],
     hashtags: ["#tacotuesday","#tacos"],
@@ -39,22 +41,15 @@ const vendorSeed = [
   {
     storeName: "Los 3 Tacos",
     owner: "Raul Gonzalez",
+    menu: Thing("000000000000000000000003"),
     ownderId: "auth0|lkjs9we89dsa",
     categories: ["Tacos", "Mexican", "TJ", "Cheap"],
     hashtags: ["#lostacos","#tacos", "#tjtacos"],
     closingTime: "1am"
   },
   {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
-  },
-  {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
+    storeName: "El Taquero",
+    owner: "Ernesto Sanchez",
     ownderId: "auth0|u9fd8ur932uifeas2",
     categories: ["Tacos", "Mexican", "TJ"],
     hashtags: ["#lostacos","#tacos"],
@@ -62,93 +57,32 @@ const vendorSeed = [
   },
   {
     storeName: "Chicano Soul Tacos",
-    owner: "Jose Ruiz",
+    owner: "Andres Ruiz",
     ownderId: "auth0|u9fd8ur932uifeas2",
   },
   {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
+    storeName: "Tacos Veganos",
+    owner: "Hanna Tefera",
     ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
-  },
-  {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
-  },
-  {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
-  },
-  {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
-  },
-  {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
-  },
-  {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
-  },
-  {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
-  },
-  {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
-  },
-  {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
+    categories: ["Tacos", "Vegan", "Glutten-free"],
+    hashtags: ["#vegantacos","#vegan", "#savetheworldandstopkillinganimalsplease"],
     closingTime: "8pm"
   }
 ];
 
 const menuSeed = [
   {
+    _id: Thing("000000000000000000000001"),
     menuName: "El Menu",
     food: [Thing("000000000000000000000001"), Thing("000000000000000000000002")]
   },
   {
+    _id: Thing("000000000000000000000002"),
     menuName: "The Menu",
     food: [Thing("000000000000000000000003"), Thing("000000000000000000000004")]
   },
   {
+    _id: Thing("000000000000000000000003"),
     menuName: "Echate Algo Guey",
     food: [Thing("000000000000000000000005"),Thing("000000000000000000000006"),Thing("000000000000000000000007")]
   }

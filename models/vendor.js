@@ -5,7 +5,7 @@ const vendorSchema = new Schema({
   storeName: { type: String, required: true },
   owner: { type: String, required: true },
   ownerId: { type: String, required: true },
-  menu: String,
+  menu: { type: Schema.Types.ObjectId, ref: "Menu" },
   categories: Array,
   hashtags: Array,
   location: String,
