@@ -87,7 +87,7 @@ const NavBar = () => {
                       to="/home"
                       className="dropdown-profile"
                     >
-                      <FontAwesomeIcon icon="link" className="mr-3" /> List
+                      <FontAwesomeIcon icon="server" className="mr-3" /> List
                     </DropdownItem>
                     <DropdownItem
                       id="qsLogoutBtn"
