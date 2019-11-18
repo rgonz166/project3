@@ -1,5 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
+const Thing = mongoose.Types.ObjectId;
 const db = require("../models");
 
 // This file empties the Books collection and inserts the books below
@@ -9,11 +10,14 @@ mongoose.connect(
   "mongodb://localhost/vendorlist"
 );
 
-const bookSeed = [
+console.log("TEST", Thing);
+
+const vendorSeed = [
   {
     storeName: "Los Tacos",
     owner: "Jose Ruiz",
     ownderId: "auth0|u9fd8ur932uifeas2",
+    menu: Thing("000000000000000000000001"),
     categories: ["Tacos", "Mexican", "TJ"],
     hashtags: ["#lostacos","#tacos"],
     closingTime: "8pm"
@@ -21,6 +25,7 @@ const bookSeed = [
   {
     storeName: "The Tacos",
     owner: "Bob Dylan",
+    menu: Thing("000000000000000000000002"),
     ownderId: "auth0|lkdfsnofw99392",
     categories: ["Tacos", "Fancy"],
     hashtags: ["#tacotuesday","#tacos"],
@@ -36,22 +41,15 @@ const bookSeed = [
   {
     storeName: "Los 3 Tacos",
     owner: "Raul Gonzalez",
+    menu: Thing("000000000000000000000003"),
     ownderId: "auth0|lkjs9we89dsa",
     categories: ["Tacos", "Mexican", "TJ", "Cheap"],
     hashtags: ["#lostacos","#tacos", "#tjtacos"],
     closingTime: "1am"
   },
   {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
-  },
-  {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
+    storeName: "El Taquero",
+    owner: "Ernesto Sanchez",
     ownderId: "auth0|u9fd8ur932uifeas2",
     categories: ["Tacos", "Mexican", "TJ"],
     hashtags: ["#lostacos","#tacos"],
@@ -59,86 +57,105 @@ const bookSeed = [
   },
   {
     storeName: "Chicano Soul Tacos",
-    owner: "Jose Ruiz",
+    owner: "Andres Ruiz",
     ownderId: "auth0|u9fd8ur932uifeas2",
   },
   {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
+    storeName: "Tacos Veganos",
+    owner: "Hanna Tefera",
     ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
+    categories: ["Tacos", "Vegan", "Glutten-free"],
+    hashtags: ["#vegantacos","#vegan", "#savetheworldandstopkillinganimalsplease"],
     closingTime: "8pm"
+  }
+];
+
+const menuSeed = [
+  {
+    _id: Thing("000000000000000000000001"),
+    menuName: "El Menu",
+    food: [Thing("000000000000000000000001"), Thing("000000000000000000000002")]
   },
   {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
+    _id: Thing("000000000000000000000002"),
+    menuName: "The Menu",
+    food: [Thing("000000000000000000000003"), Thing("000000000000000000000004")]
   },
   {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
+    _id: Thing("000000000000000000000003"),
+    menuName: "Echate Algo Guey",
+    food: [Thing("000000000000000000000005"),Thing("000000000000000000000006"),Thing("000000000000000000000007")]
+  }
+];
+
+const foodSeed = [
+  {
+    _id: Thing("000000000000000000000001"),
+    foodName: "Quesadilla",
+    price: 5.00,
+    description: "It's cheese and tortilla."
   },
   {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
+    _id: Thing("000000000000000000000002"),
+    foodName: "Flan",
+    price: 3.00,
+    description: "God's gift to earth."
   },
   {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
+    _id: Thing("000000000000000000000003"),
+    foodName: "Tacos Veganos",
+    price: 6.99
   },
   {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
+    _id: Thing("000000000000000000000004"),
+    foodName: "Tacos De Pollo",
+    price: 2.99
   },
   {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
+    _id: Thing("000000000000000000000005"),
+    foodName: "Tacos Al Pastor",
+    price: 2.99
   },
   {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
+    _id: Thing("000000000000000000000006"),
+    foodName: "Tacos De Birria",
+    price: 3.99
   },
   {
-    storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
+    _id: Thing("000000000000000000000007"),
+    foodName: "Tacos De Buche",
+    price: 2.99
   }
 ];
 
 db.Vendor
   .remove({})
-  .then(() => db.Vendor.collection.insertMany(bookSeed))
+  .then(() => db.Vendor.collection.insertMany(vendorSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+
+
+  // Create Menu
+  db.Menu
+  .remove({})
+  .then(() => db.Menu.collection.insertMany(menuSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+
+  // Create Food
+  db.Food
+  .remove({})
+  .then(() => db.Food.collection.insertMany(foodSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
