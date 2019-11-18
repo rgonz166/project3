@@ -1,6 +1,10 @@
 import axios from "axios";
 
 export default {
+  // Get User(Vendor)
+  getVendor: function(id){
+    return axios.get("/api/vendor/" + id);
+  },
   // Gets all books
   getList: function() {
     return axios.get("/api/list");

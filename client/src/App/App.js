@@ -5,6 +5,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import Validate from "./pages/Validate";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Home from './pages/Home';
@@ -37,11 +38,13 @@ const App = () => {
         <Container className="flex-grow-1 mt-5">
           <Switch>
             <Route path="/" exact component={Landing} />
+            <PrivateRoute path="/validate" component={Validate} />
             <PrivateRoute path="/home" component={Home} />
-            <PrivateRoute path="/list" component={BusinessInfo} />
+            <PrivateRoute path="/info" component={BusinessInfo} />
+            <PrivateRoute path="/list" component={List} />
             <PrivateRoute path="/profile" component={Menu} />
           </Switch>
-          <GoogleApiWrapper/>
+          {/* <GoogleApiWrapper/> */}
         </Container>
         <Footer />
       </div>
