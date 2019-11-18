@@ -11,7 +11,10 @@ import Home from './pages/Home';
 import List from './pages/List';
 import { useAuth0 } from "../react-auth0-spa";
 import history from "./utils/history";
-import './App.css';
+import GoogleApiWrapper from './components/googleMaps'
+
+// styles
+import "./App.css";
 
 // fontawesome
 import initFontAwesome from "./utils/initFontAwesome";
@@ -35,6 +38,7 @@ const App = () => {
             <PrivateRoute path="/list" component={List} />
             <PrivateRoute path="/profile" component={Profile} />
           </Switch>
+          <GoogleApiWrapper/>
         </Container>
         <Footer />
       </div>
