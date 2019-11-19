@@ -127,3 +127,5 @@ CurrentLocation.defaultProps = {
   centerAroundCurrentLocation: false,
   visible: true
 };
+
+//there is nothing wrong with this file
