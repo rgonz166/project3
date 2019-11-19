@@ -10,8 +10,6 @@ const ValidateUser = (prop) => {
     return <Loading />
 }
 
-
-
 class Validate extends Component {
     constructor(props) {
         super(props);
@@ -23,13 +21,13 @@ class Validate extends Component {
     getUser = id => {
         API.getVendor(id)
             .then(reply => {
-                reply.data.length ? this.setState({status : 1}) : this.setState({status: -1});
+                reply.data.length ? this.setState({ status: 1 }) : this.setState({ status: -1 });
             });
     }
 
     render() {
         switch (this.state.status) {
-            case 0: return <ValidateUser func={this.getUser}/>
+            case 0: return <ValidateUser func={this.getUser} />
             case 1: return <Redirect to='/' />
             case -1: return <Redirect to='/info' />
         }

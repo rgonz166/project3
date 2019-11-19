@@ -38,7 +38,7 @@ class List extends Component {
             {list.map((item) => {
               return (
                 <div key={item._id}>
-                  {item.storeName}
+                  {item.storeName} - {item.owner} - {item.categories}
                 </div>
               );
             })}

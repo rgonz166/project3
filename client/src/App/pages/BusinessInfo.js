@@ -2,8 +2,18 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Row, Col, Container} from 'reactstrap';
 
  class BusinessInfo extends Component {
+     constructor(props){
+         super(props);
+         this.state ={
+             auth0: this.props.user,
+             owner: '',
+             storeName: '',
+
+         }
+     }
     submit = (e) => {
         e.preventDefault()
+
     }
     
     render() {
@@ -19,7 +29,7 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container} from 'react
                                 type="text" 
                                 name="contact" 
                                 id="contact" 
-                                placeholder="Contact Person" 
+                                placeholder="Owner" 
                                 
                                 />
                             </FormGroup>
@@ -35,14 +45,14 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container} from 'react
                                 <Input 
                                 type="text" 
                                 name="city" 
-                                placeholder="city" 
+                                placeholder="City (optional)" 
                                 />
                             </FormGroup>
                             <FormGroup>
                                 <Input 
                                 type="text" 
                                 name="state" 
-                                placeholder="State" 
+                                placeholder="State (optional)" 
                                 />
                             </FormGroup>
                 

@@ -1,21 +1,21 @@
 import axios from "axios";
 
 export default {
+  // TESTING
+  getList: function() {
+    return axios.get("/api/list");
+  },
   // Get User(Vendor)
   getVendor: function(id){
     return axios.get("/api/vendor/" + id);
   },
-  // Gets all books
-  getList: function() {
-    return axios.get("/api/list");
-  },
-  // Gets the book with the given id
+  // Gets every vendor
   getVendors: function() {
     return axios.get("/api/vendor");
   },
-  // Deletes the book with the given id
-  deleteBook: function(id) {
-    return axios.delete("/api/books/" + id);
+  // Gets specific Menu
+  getMenu: function(id) {
+    return axios.get("/api/menu/" + id);
   },
   // Saves a book to the database
   saveBook: function(bookData) {

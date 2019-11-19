@@ -25,7 +25,7 @@ import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
 const App = () => {
-  const { loading } = useAuth0();
+  const { loading, user } = useAuth0();
 
   if (loading) {
     return <Loading />;
@@ -39,10 +39,11 @@ const App = () => {
           <Switch>
             <Route path="/" exact component={Landing} />
             <PrivateRoute path="/validate" component={Validate} />
+            <PrivateRoute path="/menu" render={()=>(<Menu user={user.sub} />)} />
             <PrivateRoute path="/home" component={Home} />
-            <PrivateRoute path="/info" component={BusinessInfo} />
+            <PrivateRoute path="/info" render={()=><BusinessInfo user={user.sub} />} />
             <PrivateRoute path="/list" component={List} />
-            <PrivateRoute path="/profile" component={Menu} />
+            <PrivateRoute path="/profile" component={Profile} />
           </Switch>
           {/* <GoogleApiWrapper/> */}
         </Container>
