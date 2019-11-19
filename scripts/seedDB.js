@@ -16,7 +16,7 @@ const vendorSeed = [
   {
     storeName: "Los Tacos",
     owner: "Jose Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
+    ownerId: "auth0|u9fd8ur932uifeas2",
     menu: Thing("000000000000000000000001"),
     categories: ["Tacos", "Mexican", "TJ"],
     hashtags: ["#lostacos","#tacos"],
@@ -26,7 +26,7 @@ const vendorSeed = [
     storeName: "The Tacos",
     owner: "Bob Dylan",
     menu: Thing("000000000000000000000002"),
-    ownderId: "auth0|lkdfsnofw99392",
+    ownerId: "auth0|lkdfsnofw99392",
     categories: ["Tacos", "Fancy"],
     hashtags: ["#tacotuesday","#tacos"],
     closingTime: "6pm"
@@ -34,7 +34,7 @@ const vendorSeed = [
   {
     storeName: "Tacos-r-us",
     owner: "Pocho Chocho",
-    ownderId: "auth0|291083nkj21",
+    ownerId: "auth0|291083nkj21",
     categories: ["Tacos", "Chicano", "TJ"],
     closingTime: "8pm"
   },
@@ -42,7 +42,7 @@ const vendorSeed = [
     storeName: "Los 3 Tacos",
     owner: "Raul Gonzalez",
     menu: Thing("000000000000000000000003"),
-    ownderId: "auth0|lkjs9we89dsa",
+    ownerId: "auth0|lkjs9we89dsa",
     categories: ["Tacos", "Mexican", "TJ", "Cheap"],
     hashtags: ["#lostacos","#tacos", "#tjtacos"],
     closingTime: "1am"
@@ -50,7 +50,7 @@ const vendorSeed = [
   {
     storeName: "El Taquero",
     owner: "Ernesto Sanchez",
-    ownderId: "auth0|u9fd8ur932uifeas2",
+    ownerId: "auth0|u9fd8ur932uifeas2",
     categories: ["Tacos", "Mexican", "TJ"],
     hashtags: ["#lostacos","#tacos"],
     closingTime: "8pm"
@@ -58,12 +58,12 @@ const vendorSeed = [
   {
     storeName: "Chicano Soul Tacos",
     owner: "Andres Ruiz",
-    ownderId: "auth0|u9fd8ur932uifeas2",
+    ownerId: "auth0|5dd0577c460ca50e25ac3769",
   },
   {
     storeName: "Tacos Veganos",
     owner: "Hanna Tefera",
-    ownderId: "auth0|u9fd8ur932uifeas2",
+    ownerId: "auth0|u9fd8ur932uifeas2",
     categories: ["Tacos", "Vegan", "Glutten-free"],
     hashtags: ["#vegantacos","#vegan", "#savetheworldandstopkillinganimalsplease"],
     closingTime: "8pm"
