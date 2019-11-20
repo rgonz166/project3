@@ -12,10 +12,11 @@ import Home from './pages/Home';
 import List from './pages/List';
 import { useAuth0 } from "../react-auth0-spa";
 import history from "./utils/history";
-import GoogleApiWrapper from './components/googleMaps';
+import GoogleApiWrapper from './components/MapApp';
 import BusinessInfo from './pages/BusinessInfo';
 import Landing from './components/Landing';
 import Menu from './pages/Menu/Menu';
+
 
 // styles
 import "./App.css";
@@ -45,7 +46,7 @@ const App = () => {
             <PrivateRoute path="/list" component={List} />
             <PrivateRoute path="/profile" component={Profile} />
           </Switch>
-          {/* <GoogleApiWrapper/> */}
+          <GoogleApiWrapper/>
         </Container>
         <Footer />
       </div>
