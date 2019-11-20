@@ -8,6 +8,7 @@ class Menu extends Component {
     super(props);
     this.state = {
       menuitems: [],
+      menuObj: {},
       itemname: "",
       price: "",
       description: "",
@@ -20,13 +21,33 @@ class Menu extends Component {
     this.getMenu();
   }
 
+  deleteFood(foodId, ref) {
+    console.log("Food ID:", foodId);
+    API.removeFood({ id: this.state.menu._id, foodId: foodId })
+      .then(function (reply) {
+        console.log("Failing This", this);
+        ref.getMenu();
+      });
+  }
+
   getMenu() {
     API.getVendor(this.state.auth0)
-    .then(result => {
-      const menu = result.data[0].menu;
-      menu ? console.log("Menu exists") : console.log("No Menu Found");
-    });
-    // API.getMenu()
+      .then(result => {
+        console.log("Getting Menu");
+        const menu = result.data[0].menu;
+        console.log("Working This", this);
+        menu ? this.getFood(menu) : console.log("No Menu Found");
+      });
+  }
+
+  getFood(foodId) {
+    console.log("Getting Food");
+    API.getMenu(foodId)
+      .then(data => {
+        console.log("Getting Food");
+        console.log("Data: ", data.data);
+        this.setState({ menu: data.data, menuitems: data.data.food });
+      });
   }
 
   deleteItem = id => {
@@ -109,10 +130,10 @@ class Menu extends Component {
                   {this.state.menuitems.map(item => (
                     <ListGroupItem key={item._id} >
                       <strong>
-                        {item.itemname}
+                        {item.foodName}
                       </strong>
                       {" . . . . . . . . . . . . . . . "} ${item.price}
-                      <span className="delete-btn" role="button" tabIndex="0" onClick={() => this.deleteItem(item._id)}>
+                      <span className="delete-btn" role="button" tabIndex="0" onClick={() => { this.deleteFood(item._id, this) }}>
                         ✗
                     </span> <br />
                       <p>
@@ -123,7 +144,7 @@ class Menu extends Component {
                   ))}
                 </ListGroup>
               ) : (
-                  <p className="text-center">No Menu Item Added Yet.</p>
+                  <p className="text-center">{this.state.menuitems.length ? "Menu Items Found" : "No Menu Found"}</p>
                 )}
             </Card>
           </Col>
