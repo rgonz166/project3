@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { useAuth0 } from "../../react-auth0-spa";
 import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import logo from "../assets/food-truck.jpg";
 
 const Landing = () => {
@@ -28,10 +29,12 @@ const Landing = () => {
                     <p>OR</p>
                     </div>
                     <div className="col-5">
-                    <Button color="info">Customer</Button>
+                        <Link to="/customer">
+                            <Button color="info">Customer</Button>
+                        </Link>
                     </div>
                 </div>
-             </div>
+            </div>
         </div>
         )
 }
