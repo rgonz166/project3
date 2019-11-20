@@ -12,10 +12,11 @@ import Home from './pages/Home';
 import List from './pages/List';
 import { useAuth0 } from "../react-auth0-spa";
 import history from "./utils/history";
-import GoogleApiWrapper from './components/MapApp';
+
 import BusinessInfo from './pages/BusinessInfo';
 import Landing from './components/Landing';
 import Menu from './pages/Menu/Menu';
+import Customer from './pages/Customer';
 
 
 // styles
@@ -38,7 +39,8 @@ const App = () => {
         <NavBar />
         <Container className="flex-grow-1 mt-5">
           <Switch>
-            <Route path="/" exact component={Landing} />
+            <Route path="/" exact component={Landing} /> 
+            <Route path="/customer" exact component={Customer} />        
             <PrivateRoute path="/validate" component={Validate} />
             <PrivateRoute path="/menu" render={()=>(<Menu user={user.sub} />)} />
             <PrivateRoute path="/home" component={Home} />
@@ -46,7 +48,7 @@ const App = () => {
             <PrivateRoute path="/list" component={List} />
             <PrivateRoute path="/profile" component={Profile} />
           </Switch>
-          <GoogleApiWrapper/>
+          
         </Container>
         <Footer />
       </div>
