@@ -33,10 +33,10 @@ const App = () => {
         <NavBar />
         <Container className="flex-grow-1 mt-5">
           <Switch>
-            <Route path="/" exact component={Login} />
+            <Route path="/" exact component={Landing} />
             <PrivateRoute path="/home" component={Home} />
-            <PrivateRoute path="/list" component={List} />
-            <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/list" component={BusinessInfo} />
+            <PrivateRoute path="/profile" component={Menu} />
           </Switch>
           <GoogleApiWrapper/>
          
