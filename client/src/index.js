@@ -17,7 +17,7 @@ render(
     <Auth0Provider
         domain={'twilight-wave-5488.auth0.com'}
         client_id={'rmCKcR4D3Yk7HVYu9N7j-l46R1s0MWw0'}
-        redirect_uri={window.location.origin}
+        redirect_uri={window.location.origin + "/validate"}
         onRedirectCallback={onRedirectCallback}
     >
         <App />

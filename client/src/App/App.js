@@ -5,16 +5,18 @@ import PrivateRoute from "./components/PrivateRoute";
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import Validate from "./pages/Validate";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Home from './pages/Home';
 import List from './pages/List';
 import { useAuth0 } from "../react-auth0-spa";
 import history from "./utils/history";
-import GoogleApiWrapper from './components/googleMaps';
+import GoogleApiWrapper from './components/MapApp';
 import BusinessInfo from './pages/BusinessInfo';
 import Landing from './components/Landing';
 import Menu from './pages/Menu/Menu';
+
 
 // styles
 import "./App.css";
@@ -24,7 +26,7 @@ import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
 const App = () => {
-  const { loading } = useAuth0();
+  const { loading, user } = useAuth0();
 
   if (loading) {
     return <Loading />;
@@ -37,9 +39,12 @@ const App = () => {
         <Container className="flex-grow-1 mt-5">
           <Switch>
             <Route path="/" exact component={Landing} />
+            <PrivateRoute path="/validate" component={Validate} />
+            <PrivateRoute path="/menu" render={()=>(<Menu user={user.sub} />)} />
             <PrivateRoute path="/home" component={Home} />
-            <PrivateRoute path="/list" component={BusinessInfo} />
-            <PrivateRoute path="/profile" component={Menu} />
+            <PrivateRoute path="/info" render={()=><BusinessInfo user={user.sub} />} />
+            <PrivateRoute path="/list" component={List} />
+            <PrivateRoute path="/profile" component={Profile} />
           </Switch>
           <GoogleApiWrapper/>
         </Container>
