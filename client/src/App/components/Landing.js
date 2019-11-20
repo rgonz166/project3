@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { useAuth0 } from "../../react-auth0-spa";
 import { Button } from 'reactstrap';
 import logo from "../assets/food-truck.jpg";
+import {Link} from 'react-router-dom';
+import { Redirect } from 'react-router';
+
 
 const Landing = () => {
 
     const { loginWithRedirect } = useAuth0();
-
-    
+   
+   
         return (
             <div>
                 <div className="text-center hero my-2">
@@ -28,7 +31,7 @@ const Landing = () => {
                     <p>OR</p>
                     </div>
                     <div className="col-5">
-                    <Button color="info">Customer</Button>
+                   <Link to = "/customer"><Button color="info" onClick={<Redirect push to= "/customer"/>}>Customer</Button> </Link>
                     </div>
                 </div>
              </div>
