@@ -5,10 +5,10 @@ import { faSearch  } from '@fortawesome/free-solid-svg-icons';
 
 const Searchbar = () => {
     return (
-        <Container>
+        <Container className="mb-3">
             <Row>
-                <Col sm="12" lg={{ size: 8, offset: 3 }}>
-                    <Form className="mt-2">
+                <Col md={12} >
+                    <Form>
                         <InputGroup>
                             <InputGroupAddon addonType="prepend">
                                 <Button color="warning"><FontAwesomeIcon icon={faSearch}/></Button>

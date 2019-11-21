@@ -3,18 +3,21 @@ import { useAuth0 } from "../../react-auth0-spa";
 import { Link } from "react-router-dom";
 import { Button } from 'reactstrap';
 import logo from "../assets/food-truck.jpg";
+import {Link} from 'react-router-dom';
+import { Redirect } from 'react-router';
+
 
 const Landing = () => {
 
     const { loginWithRedirect } = useAuth0();
-
-
-    return (
-        <div>
-            <div className="text-center hero my-2">
-                <img className="mb-2 app-logo" src={logo} alt="logo" width="120" />
-                <h1 className="mb-2">MHEELS</h1>
-                <p className="lead">
+   
+   
+        return (
+            <div>
+                <div className="text-center hero my-2">
+                    <img className="mb-2 app-logo" src={logo} alt="logo" width="120" />
+                    <h1 className="mb-2">MHEELS</h1>
+                    <p className="lead">
                     Track and Eat
                      </p>
             </div>
@@ -29,9 +32,7 @@ const Landing = () => {
                         <p>OR</p>
                     </div>
                     <div className="col-5">
-                        <Link to="/customer">
-                            <Button color="info">Customer</Button>
-                        </Link>
+                   <Link to = "/customer"><Button color="info" onClick={<Redirect push to= "/customer"/>}>Customer</Button> </Link>
                     </div>
                 </div>
             </div>
