@@ -10,7 +10,7 @@ router.route("/")
 router
   .route("/:id")
   .get(foodController.findById)
-  .put(foodController.removeFood)
+  // .put(foodController.removeFood)
   .delete(foodController.remove);
 
 module.exports = router;
