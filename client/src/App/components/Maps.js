@@ -80,7 +80,7 @@ export class CurrentLocation extends React.Component {
             {},
             {
               center: center,
-              zoom: zoom
+              zoom: 11
             }
           );
     
