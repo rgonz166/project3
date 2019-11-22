@@ -17,6 +17,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+import logo from "../assets/tortaLogo_transparent.png";
 
 import { useAuth0 } from "../../react-auth0-spa";
 
@@ -25,6 +26,11 @@ const NavBar = () => {
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
 
+
+  const CompanyLogo = () => {
+    return <img src="../assets/tortaLogo_transparent.png"></img>
+  }
+
   const logoutWithRedirect = () =>
     logout({
       returnTo: window.location.origin
@@ -32,9 +38,9 @@ const NavBar = () => {
 
   return (
     <div className="nav-container">
-      <Navbar style={{ backgroundColor: 'rgb(242, 190, 0)' }} light expand="md">
+      <Navbar style={{ backgroundColor: '#F3C51A' }} light expand="md">
         <Container>
-          <NavbarBrand className="logo" />
+          <img height='50px' width='60px' style={{marginRight: '10px'}} src={logo}></img>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { useAuth0 } from "../../react-auth0-spa";
 import { Link } from "react-router-dom";
 import { Button } from 'reactstrap';
-import logo from "../assets/food-truck.jpg";
+import logo from "../assets/food-truck-transparent.png";
 import { Redirect } from 'react-router';
 
 
