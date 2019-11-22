@@ -59,6 +59,7 @@ const vendorSeed = [
     storeName: "Chicano Soul Tacos",
     owner: "Andres Ruiz",
     ownerId: "auth0|5dd0577c460ca50e25ac3769",
+    menu: Thing("000000000000000000000003")
   },
   {
     storeName: "Tacos Veganos",
