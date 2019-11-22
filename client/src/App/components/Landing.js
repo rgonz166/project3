@@ -9,8 +9,6 @@ import { Redirect } from 'react-router';
 const Landing = () => {
 
     const { loginWithRedirect } = useAuth0();
-   
-   
         return (
             <div>
                 <div className="text-center hero my-2">
