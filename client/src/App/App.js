@@ -17,6 +17,7 @@ import BusinessInfo from './pages/BusinessInfo';
 import Landing from './components/Landing';
 import Menu from './pages/Menu/Menu';
 import Customer from './pages/Customer';
+// import vendorSeed from '../../../scripts/seedDB'
 
 
 // styles
