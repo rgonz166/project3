@@ -22,7 +22,7 @@ class Menu extends Component {
 
   deleteFood(foodId, ref) {
     console.log("Food ID:", foodId);
-    API.removeFood({ id: this.state.menu._id, foodId: foodId })
+    API.removeFood({ id: this.state.menuObj._id, foodId: foodId })
       .then(function (reply) {
         console.log("Failing This", this);
         ref.getMenu();
