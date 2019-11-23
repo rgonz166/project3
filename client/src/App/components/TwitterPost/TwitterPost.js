@@ -49,7 +49,6 @@ class TwitterPost extends Component {
                       >
                         Characters Left: {this.state.chars_left}
                       </p>
-                      <FormText>This is a form text</FormText>
                     </FormGroup>
                   </Form>
                   <Button color="success" onClick={this.submit}>Submit</Button>
