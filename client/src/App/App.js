@@ -4,7 +4,7 @@ import { Container } from "reactstrap";
 import PrivateRoute from "./components/PrivateRoute";
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
+//import Footer from "./components/Footer";
 import Validate from "./pages/Validate";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -51,7 +51,7 @@ const App = () => {
           </Switch>
           
         </Container>
-        <Footer />
+        
       </div>
     </Router>
   );

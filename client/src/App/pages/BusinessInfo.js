@@ -24,7 +24,7 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
                 <Row>
                     <Col sm="12">
                         <Card>
-                            <CardHeader style={{ backgroundColor: 'rgb(242, 190, 0)' }}>Business Information </CardHeader>
+                            <CardHeader ><strong>Business Information</strong> </CardHeader>
                             <CardBody>
                                 <Form>
                                     <FormGroup>
