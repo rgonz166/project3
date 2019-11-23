@@ -32,7 +32,6 @@ export class MapContainer extends Component {
         });
       }
     };
-
     
   
     render() {
@@ -68,3 +67,8 @@ position={{lat: 32.842674, lng: -117.257767}} />
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyDcVj1DhyIDz72KxCdYdlyYfeYn01e_SAw'
 })(MapContainer);
+
+export const categoryFilter = (e) =>{
+  console.log(e + " here");
+      }
+  
