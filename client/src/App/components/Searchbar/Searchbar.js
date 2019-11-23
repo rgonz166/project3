@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch  } from '@fortawesome/free-solid-svg-icons'; 
 import Category from '../Category';
 import "./searchbar.css";
+import {categoryFilter} from '../MapApp';
 
 export default class AutoComplete extends Component {
     constructor (props){
@@ -26,6 +27,11 @@ export default class AutoComplete extends Component {
         this.setState(() => ({ suggestions, text: value }));
         
     }
+    handleClick= (event) => {//this grabs the customer search
+        var cat = this.state.text;
+        console.log(cat);
+        categoryFilter(cat);
+      }
 
     componentDidMount() {
         this.setState({items : Category});
@@ -61,7 +67,7 @@ export default class AutoComplete extends Component {
                             <InputGroup>
                                 <Input value={text} onChange={this.onTextChanged} />
                                 <InputGroupAddon addonType="append">
-                                    <Button color="warning"><FontAwesomeIcon icon={faSearch}/></Button>
+                                    <Button onClick = {this.handleClick} color="warning"><FontAwesomeIcon  icon={faSearch}/></Button>
                                 </InputGroupAddon>     
                             </InputGroup>
                                 <ul>
@@ -74,3 +80,4 @@ export default class AutoComplete extends Component {
         )
     }
 }
+
