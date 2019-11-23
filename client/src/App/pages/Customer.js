@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Searchbar from '../components/Searchbar';
+import Searchbar from '../components/Searchbar/Searchbar';
 import GoogleApiWrapper from '../components/MapApp';
 import { Container, Row, Col } from 'reactstrap';
+
 
 const Customer = () => {
         return (
@@ -12,6 +13,7 @@ const Customer = () => {
         </Col>
         <Col lg={8}>
           <GoogleApiWrapper/>
+
         </Col>
       </Row>
       

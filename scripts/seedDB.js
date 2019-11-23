@@ -165,3 +165,4 @@ db.Vendor
     console.error(err);
     process.exit(1);
   });
+  export default vendorSeed
