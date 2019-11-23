@@ -9,10 +9,9 @@ class Menu extends Component {
     this.state = {
       menuitems: [],
       menuObj: {},
-      itemname: "",
+      foodName: "",
       price: "",
       description: "",
-      _id: 1,
       auth0: props.user
     }
   }
@@ -63,17 +62,10 @@ class Menu extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.itemname && this.state.price) {
-      let menuitems = this.state.menuitems;
-      let _id = this.state._id;
-
-      let menuitem = { itemname: this.state.itemname, price: this.state.price };
-      menuitem._id = this.state._id;
-
-      menuitem.description = this.state.description != null ? this.state.description : "";
-      menuitems.push(menuitem);
-
-      this.setState({ menuitems: menuitems, _id: _id + 1, itemname: "", price: "", description: "" });
+    if (this.state.foodName && this.state.price) {
+      // menuitem.description = this.state.description != null ? this.state.description : "";
+      // API.createFood()
+      this.setState({ foodName: "", price: "", description: "" });
     }
   };
 
@@ -88,9 +80,9 @@ class Menu extends Component {
             <Form>
               <FormGroup>
                 <Input
-                  value={this.state.itemname}
+                  value={this.state.foodName}
                   onChange={this.handleInputChange}
-                  name="itemname"
+                  name="foodName"
                   placeholder="item name (required)"
                 />
               </FormGroup>
@@ -114,7 +106,7 @@ class Menu extends Component {
               <Button
                 color="success"
                 className="add-menu-item"
-                disabled={!(this.state.price && this.state.itemname)}
+                disabled={!(this.state.price && this.state.foodName)}
                 onClick={this.handleFormSubmit}
               >
                 Add Menu Item
