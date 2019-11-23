@@ -24,7 +24,9 @@ class TwitterPost extends Component {
           <Row>
             <Col sm="12">
               <Card>
-                <CardHeader ><strong>Twitter Posting</strong></CardHeader>
+                <CardHeader >
+                  <strong>Twitter Posting</strong>
+                </CardHeader>
                 <CardBody>
                   <Form>
                     <FormGroup>
@@ -33,10 +35,10 @@ class TwitterPost extends Component {
                       name="twitter-body"
                       id="twitter-body"
                       placeholder="Insert tweet"
-
                       />
                     </FormGroup>
                   </Form>
+                  <Button color="success" onClick={this.submit}>Submit</Button>
                 </CardBody>
               </Card>
             </Col>
