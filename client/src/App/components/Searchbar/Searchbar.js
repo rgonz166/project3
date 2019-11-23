@@ -2,34 +2,33 @@ import React, { Component } from 'react';
 import { Button, Form, Input, Row, Col, Container,InputGroup, InputGroupAddon,} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch  } from '@fortawesome/free-solid-svg-icons'; 
+import Category from '../Category';
 import "./searchbar.css";
-  
+
 export default class AutoComplete extends Component {
     constructor (props){
-        super (props);
-        this.items = [
-            
-            'Mexican',
-            'Sea food',
-            'American Fusion',
-            'Chinese',
-            'Middle Eastern'
-        ];  
+        super (props);  
         this.state={
             suggestions: [],
             text: "",
+            items: [],
         };     
     }
     
     onTextChanged = (e) => {
+        const items = this.state.items;
         const value = e.target.value;
         let suggestions = [];
         if(value.length > 0){
             const matchlen = new RegExp (`^${value}`, 'i');
-            suggestions = this.items.sort().filter(v => matchlen.test(v));
+            suggestions = items.sort().filter(v => matchlen.test(v));
         }
         this.setState(() => ({ suggestions, text: value }));
         
+    }
+
+    componentDidMount() {
+        this.setState({items : Category});
     }
 
     suggestionSelected (value) {
@@ -60,10 +59,10 @@ export default class AutoComplete extends Component {
                     <Col md={12} >
                         <Form>
                             <InputGroup>
-                                <InputGroupAddon addonType="prepend">
+                                <Input value={text} onChange={this.onTextChanged} />
+                                <InputGroupAddon addonType="append">
                                     <Button color="warning"><FontAwesomeIcon icon={faSearch}/></Button>
-                                </InputGroupAddon>   
-                                <Input value={text} onChange={this.onTextChanged} /> 
+                                </InputGroupAddon>     
                             </InputGroup>
                                 <ul>
                                     {this.renderSuggestions()}
@@ -72,8 +71,6 @@ export default class AutoComplete extends Component {
                     </Col>
                 </Row>       
             </Container>
-
-            
         )
     }
 }

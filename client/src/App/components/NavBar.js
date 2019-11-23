@@ -38,7 +38,7 @@ const NavBar = () => {
 
   return (
     <div className="nav-container">
-      <Navbar style={{ backgroundColor: '#F3C51A' }} light expand="md">
+      <Navbar style={{ backgroundColor: '#F6D24D' }} light expand="md">
         <Container>
           <img height='50px' width='60px' style={{marginRight: '10px'}} src={logo}></img>
           <NavbarToggler onClick={toggle} />
