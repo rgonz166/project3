@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import {Button,Form,FormGroup,Label,Input,Row,Col,Container,Card,CardBody,CardHeader} from "reactstrap"
+import {Button,Form,FormGroup,Label,Input,Row,Col,Container,Card,CardBody,CardHeader,FormText} from "reactstrap"
 
 class TwitterPost extends Component {
 
@@ -49,6 +49,7 @@ class TwitterPost extends Component {
                       >
                         Characters Left: {this.state.chars_left}
                       </p>
+                      <FormText>This is a form text</FormText>
                     </FormGroup>
                   </Form>
                   <Button color="success" onClick={this.submit}>Submit</Button>
