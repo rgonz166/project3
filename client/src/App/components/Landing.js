@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import { useAuth0 } from "../../react-auth0-spa";
 import { Link } from "react-router-dom";
 import { Button } from 'reactstrap';
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-import logo from "../assets/food-truck.jpg";
-=======
 import logo from "../assets/food-truck-transparent.png";
->>>>>>> 35855ad27602e1118d998792110709f58174b9b4
 import { Redirect } from 'react-router';
 
 
