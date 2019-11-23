@@ -9,8 +9,13 @@ class TwitterPost extends Component {
       auth0: this.props.user,
       owner: '',
       tweetBody: '',
-      tags: ''
+      tags: '',
+      chars_left: 280
     }
+  }
+
+  onChange = (event) => {
+    this.setState()
   }
 
   submit = (e) => {
@@ -36,6 +41,14 @@ class TwitterPost extends Component {
                       id="twitter-body"
                       placeholder="Insert tweet"
                       />
+                      <p style={{
+                        textAlign:"right",
+                        color: "#999",
+                        fontSize: "12px"
+                        }}
+                      >
+                        Characters Left: {this.state.chars_left}
+                      </p>
                     </FormGroup>
                   </Form>
                   <Button color="success" onClick={this.submit}>Submit</Button>
