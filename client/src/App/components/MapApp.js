@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { Map, GoogleApiWrapper } from 'google-maps-react';
 // import { InfoWindow, Marker } from 'google-maps-react';
+// import vendorSeed from '../../../../scripts/seedDB'
 
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import CurrentLocation from './Maps';
@@ -31,14 +32,25 @@ export class MapContainer extends Component {
         });
       }
     };
+
+    
   
     render() {
       return (
+        
         <CurrentLocation
           centerAroundCurrentLocation
           google={this.props.google}
         >
-          <Marker onClick={this.onMarkerClick} name={'WAZZZ TEAM BLACK POWER RANGER'} />
+          <Marker onClick={this.onMarkerClick} name={"my location"} />
+          <Marker onClick = {this.onMarkerClick} name={"ecw"}
+position={{lat: 32.715736, lng: -117.161087}} />
+<Marker onClick = {this.onMarkerClick} name={'here'}
+position={{lat: 32.7560, lng: -117.161087}} />
+<Marker onClick = {this.onMarkerClick} name={'here'}
+position={{lat: 32.842674, lng: -117.257767}} />
+
+ 
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}

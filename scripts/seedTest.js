@@ -35,6 +35,7 @@ db.Vendor
   })
   .exec(function (err, res) {
     if (err) throw err;
+    console.log(res);
     res.forEach(content => {
       let keys = Object.keys(content.toJSON());
       console.log(`======== ${content['storeName']} ==========`);
