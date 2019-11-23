@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardBody, CardHeader} from 'reactstrap';
 
+
  class BusinessInfo extends Component {
      constructor(props){
          super(props);
@@ -8,6 +9,7 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
              auth0: this.props.user,
              owner: '',
              storeName: '',
+            
 
          }
      }
@@ -16,6 +18,8 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
 
     }
     
+   
+
     render() {
         const { } = this.props;
         return (
@@ -67,13 +71,38 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
                                         placeholder="Select Business Category"
                                         >
                                             <option>Select category</option>
-                                            <option>Mexican</option>
-                                            <option>Sea food</option>
+                                            <option>American</option>
                                             <option>American Fusion</option>
-                                            <option>Chinese</option>
-                                            <option>Middle Eastern</option>
+                                            <option>Asian Fusion</option>
+                                            <option>BBQ</option>
+                                            <option>British</option>
                                             <option>Burgers</option>
+                                            <option>California</option>
+                                            <option>Chinese</option>
+                                            <option>Eclectic</option>
+                                            <option>Greek</option>
+                                            <option>German</option>
+                                            <option>Hawaiian</option>
+                                            <option>Hot Dogs</option>
                                             <option>Italian</option>
+                                            <option>Indian</option>
+                                            <option>Japanese</option>
+                                            <option>Japanese Fusion</option>
+                                            <option>Korian</option>
+                                            <option>Lobster</option>
+                                            <option>Mexican</option>
+                                            <option>Mediterranean</option>
+                                            <option>Middle Eastern</option>
+                                            <option>New York</option>
+                                            <option>Peruvian</option>
+                                            <option>Pizza</option>
+                                            <option>Polish</option>
+                                            <option>Sea food</option>
+                                            <option>Sushi</option>
+                                            <option>Tacos</option>
+                                            <option>Thai</option>
+                                            <option>Vegan</option>
+                                            <option>Vegetarian</option>
                                         </Input>
                                     </FormGroup>
                                 </Form>
