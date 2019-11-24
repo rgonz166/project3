@@ -50,9 +50,7 @@ const App = () => {
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/twitter" render={() =><TwitterPost user={user.sub} />} />
           </Switch>
-          
         </Container>
-        
       </div>
     </Router>
   );

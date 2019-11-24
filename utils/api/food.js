@@ -8,7 +8,7 @@ router.route("/")
 
 // Matches with "/api/food/:id"
 router
-  .route("/:id")
+  .route("/:obj")
   .get(foodController.findById)
   // .put(foodController.removeFood)
   .delete(foodController.remove);

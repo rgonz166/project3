@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardBody, CardHeader} from 'reactstrap';
+import Category from '../components/Category';
 
  class BusinessInfo extends Component {
      constructor(props){
@@ -8,13 +9,18 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
              auth0: this.props.user,
              owner: '',
              storeName: '',
-
+             items: [],
          }
      }
+     
     submit = (e) => {
         e.preventDefault()
 
     }
+    
+   componentDidMount(){
+       this.setState({items: Category})
+   }
     
     render() {
         const { } = this.props;
@@ -32,7 +38,6 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
                                         name="contact" 
                                         id="contact" 
                                         placeholder="Owner" 
-                                        
                                         />
                                     </FormGroup>
                                     <FormGroup>
@@ -57,7 +62,6 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
                                         placeholder="State (optional)" 
                                         />
                                     </FormGroup>
-                        
                                     <FormGroup>
                                         <Label for="category-list">Category</Label>    
                                         <Input 
@@ -67,13 +71,11 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
                                         placeholder="Select Business Category"
                                         >
                                             <option>Select category</option>
-                                            <option>Mexican</option>
-                                            <option>Sea food</option>
-                                            <option>American Fusion</option>
-                                            <option>Chinese</option>
-                                            <option>Middle Eastern</option>
-                                            <option>Burgers</option>
-                                            <option>Italian</option>
+                                            {this.state.items.map(choice =>
+                                            <option>
+                                                {choice}
+                                            </option>
+                                            )}
                                         </Input>
                                     </FormGroup>
                                 </Form>
