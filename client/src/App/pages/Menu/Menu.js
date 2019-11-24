@@ -8,7 +8,8 @@ class Menu extends Component {
     super(props);
     this.state = {
       menuitems: [],
-      menuObj: {},
+      menuStatus: "Loading...",
+      menu: '',
       foodName: "",
       price: "",
       description: "",
@@ -20,38 +21,46 @@ class Menu extends Component {
     this.getMenu();
   }
 
+  // Removes Food from Menu then Deletes Food from FoodDB
   deleteFood(foodId, ref) {
-    console.log("Food ID:", foodId);
+    this.setState({
+      menuitems: this.state.menuitems.filter(obj => {
+        return obj._id !== foodId;
+      })
+    });
     API.removeFood({ id: this.state.menu._id, foodId: foodId })
       .then(function (reply) {
-        console.log("Failing This", this);
-        ref.getMenu();
+        console.log("This is reply", reply, foodId);
+        API.deleteFood(foodId)
+          .then(reply => {
+            console.log("Food:", reply);
+            ref.getMenu();
+          })
+          .catch(err=> console.log(err));
       });
   }
 
+  // Grabs Vendor obj, if they have a menu then grab it, else set status to no menu found
   getMenu() {
     API.getVendor(this.state.auth0)
       .then(result => {
-        console.log("Getting Menu");
+        console.log("Getting Menu", result);
         const menu = result.data[0].menu;
-        console.log("Working This", this);
-        menu ? this.getFood(menu) : console.log("No Menu Found");
+        console.log("Menu: ", menu);
+        menu ? this.getFood(menu) : this.setState({ menuStatus: "No Menu Found" });
       });
   }
 
+  // Gets Menu Food Items by passing MenuID from VendorObj
   getFood(foodId) {
     console.log("Getting Food");
     API.getMenu(foodId)
       .then(data => {
-        console.log("Getting Food");
-        console.log("Data: ", data.data);
-        this.setState({ menu: data.data, menuitems: data.data.food });
+        data.data.food.length ?
+          this.setState({ menu: data.data, menuitems: data.data.food }) :
+          this.setState({ menu: data.data, menuitems: [], menuStatus: "No Menu Found" });
       });
   }
-
-  deleteItem = id => {
-    alert(id)
-  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -63,9 +72,17 @@ class Menu extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.foodName && this.state.price) {
-      // menuitem.description = this.state.description != null ? this.state.description : "";
-      // API.createFood()
-      this.setState({ foodName: "", price: "", description: "" });
+      const newFood = {
+        foodName: this.state.foodName,
+        price: this.state.price,
+        description: this.state.description != null ? this.state.description : ""
+      };
+      API.createFood(newFood, this.state.menu._id)
+        .then(reply => {
+          let newMenu = this.state.menuitems;
+          newMenu.push(reply.data);
+          this.setState({ foodName: "", price: "", description: "", menuitems: newMenu });
+        });
     }
   };
 
@@ -136,7 +153,7 @@ class Menu extends Component {
                   ))}
                 </ListGroup>
               ) : (
-                  <p className="text-center">{this.state.menuitems.length ? "Menu Items Found" : "No Menu Found"}</p>
+                  <p className="text-center">{this.state.menuitems.length ? '' : this.state.menuStatus}</p>
                 )}
             </Card>
           </Col>
