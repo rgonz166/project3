@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardBody, CardHeader} from 'reactstrap';
-
+import Category from '../components/Category';
 
  class BusinessInfo extends Component {
      constructor(props){
@@ -9,8 +9,7 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
              auth0: this.props.user,
              owner: '',
              storeName: '',
-            
-
+             items: [],
          }
      }
      
@@ -19,8 +18,10 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
 
     }
     
-   
-
+   componentDidMount(){
+       this.setState({items: Category})
+   }
+    
     render() {
         const { } = this.props;
         return (
@@ -37,7 +38,6 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
                                         name="contact" 
                                         id="contact" 
                                         placeholder="Owner" 
-                                        
                                         />
                                     </FormGroup>
                                     <FormGroup>
@@ -62,7 +62,6 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
                                         placeholder="State (optional)" 
                                         />
                                     </FormGroup>
-                        
                                     <FormGroup>
                                         <Label for="category-list">Category</Label>    
                                         <Input 
@@ -72,38 +71,11 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
                                         placeholder="Select Business Category"
                                         >
                                             <option>Select category</option>
-                                            <option>American</option>
-                                            <option>American Fusion</option>
-                                            <option>Asian Fusion</option>
-                                            <option>BBQ</option>
-                                            <option>British</option>
-                                            <option>Burgers</option>
-                                            <option>California</option>
-                                            <option>Chinese</option>
-                                            <option>Eclectic</option>
-                                            <option>Greek</option>
-                                            <option>German</option>
-                                            <option>Hawaiian</option>
-                                            <option>Hot Dogs</option>
-                                            <option>Italian</option>
-                                            <option>Indian</option>
-                                            <option>Japanese</option>
-                                            <option>Japanese Fusion</option>
-                                            <option>Korian</option>
-                                            <option>Lobster</option>
-                                            <option>Mexican</option>
-                                            <option>Mediterranean</option>
-                                            <option>Middle Eastern</option>
-                                            <option>New York</option>
-                                            <option>Peruvian</option>
-                                            <option>Pizza</option>
-                                            <option>Polish</option>
-                                            <option>Sea food</option>
-                                            <option>Sushi</option>
-                                            <option>Tacos</option>
-                                            <option>Thai</option>
-                                            <option>Vegan</option>
-                                            <option>Vegetarian</option>
+                                            {this.state.items.map(choice =>
+                                            <option>
+                                                {choice}
+                                            </option>
+                                            )}
                                         </Input>
                                     </FormGroup>
                                 </Form>
