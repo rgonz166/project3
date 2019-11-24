@@ -49,9 +49,7 @@ const App = () => {
             <PrivateRoute path="/list" component={List} />
             <PrivateRoute path="/profile" component={Profile} />
           </Switch>
-          
         </Container>
-        
       </div>
     </Router>
   );
