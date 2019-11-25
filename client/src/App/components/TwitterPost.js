@@ -10,12 +10,25 @@ class TwitterPost extends Component {
       owner: '',
       tweetBody: '',
       tags: '',
-      chars_left: 280
+      maxChars: 280,
+      tweetChars: 0,
+      tweetCharsLeft:280
     }
   }
 
   onChange = (event) => {
-    this.setState()
+    this.setState({
+      tweetBody: event.target.value,
+      tweetChars: event.target.value.length,
+      tweetCharsLeft: this.state.maxChars - event.target.value.length
+    })
+  }
+
+  // Note: add custom user tweet body from db in did mount
+  componentDidMount(){
+    this.setState({
+      tweetCharsLeft: this.state.maxChars - this.state.tweetBody.length
+    })
   }
 
   submit = (e) => {
@@ -39,6 +52,8 @@ class TwitterPost extends Component {
                       type="textarea"
                       name="twitter-body"
                       id="twitter-body"
+                      value={this.state.tweetBody}
+                      onChange={this.onChange}
                       placeholder="Insert tweet"
                       />
                       <p style={{
@@ -47,7 +62,7 @@ class TwitterPost extends Component {
                         fontSize: "12px"
                         }}
                       >
-                        Characters Left: {this.state.chars_left}
+                        Characters Left: <span id="tweet-chars-left">{this.state.tweetCharsLeft}</span>
                       </p>
                     </FormGroup>
                   </Form>
