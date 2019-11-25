@@ -62,7 +62,7 @@ class TwitterPost extends Component {
                         fontSize: "12px"
                         }}
                       >
-                        Characters Left: <span id="tweet-chars-left">{this.state.tweetCharsLeft}</span>
+                        Characters Left: <span style={(this.state.tweetCharsLeft < 0)?{color:"red"}:{}}>{this.state.tweetCharsLeft}</span>
                       </p>
                     </FormGroup>
                   </Form>
