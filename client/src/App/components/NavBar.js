@@ -102,7 +102,7 @@ const NavBar = () => {
                       to="/twitter"
                       className="dropdown-profile"
                     >
-                      <FontAwesomeIcon icon="twitter" className="mr-3" /> Social Media
+                      <FontAwesomeIcon icon="user" className="mr-3" /> Social Media
                     </DropdownItem>
                     <DropdownItem
                       tag={RouterNavLink}
