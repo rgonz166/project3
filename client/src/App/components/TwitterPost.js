@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import {Button,Form,FormGroup,Input,Row,Col,Container,Card,CardBody,CardHeader} from "reactstrap"
+import API from "../utils/API";
 
 class TwitterPost extends Component {
 
@@ -26,8 +27,9 @@ class TwitterPost extends Component {
 
   // Note: add custom user tweet body from db in did mount
   componentDidMount(){
+    this.getUser();
     this.setState({
-      tweetCharsLeft: this.state.maxChars - this.state.tweetBody.length
+      tweetCharsLeft: this.state.maxChars - this.state.tweetBody.length,
     })
   }
 
