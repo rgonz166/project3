@@ -25,9 +25,17 @@ class TwitterPost extends Component {
     })
   }
 
+  getUser = (id) => {
+    API.getVendor(id)
+      .then(res => {
+        console.log("vendor stuff",res.data);
+      })
+  }
+
   // Note: add custom user tweet body from db in did mount
   componentDidMount(){
-    this.getUser();
+    console.log(this.state.auth0);
+    this.getUser(this.state.auth0);
     this.setState({
       tweetCharsLeft: this.state.maxChars - this.state.tweetBody.length,
     })

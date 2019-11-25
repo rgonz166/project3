@@ -7,7 +7,6 @@ import NavBar from "./components/NavBar";
 import TwitterPost from "./components/TwitterPost";
 //import Footer from "./components/Footer";
 import Validate from "./pages/Validate";
-import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Home from './pages/Home';
 import List from './pages/List';
@@ -48,7 +47,7 @@ const App = () => {
             <PrivateRoute path="/info" render={()=><BusinessInfo user={user.sub} />} />
             <PrivateRoute path="/list" component={List} />
             <PrivateRoute path="/profile" component={Profile} />
-            <PrivateRoute path="/twitter" render={() =><TwitterPost user={user.sub} />} />
+            <PrivateRoute path="/twitter" render={() =>(<TwitterPost user={user.sub} />)} />
           </Switch>
         </Container>
       </div>
