@@ -99,6 +99,13 @@ const NavBar = () => {
                     </DropdownItem>
                     <DropdownItem
                       tag={RouterNavLink}
+                      to="/twitter"
+                      className="dropdown-profile"
+                    >
+                      <FontAwesomeIcon icon="twitter" className="mr-3" /> Social Media
+                    </DropdownItem>
+                    <DropdownItem
+                      tag={RouterNavLink}
                       to="/menu"
                       className="dropdown-profile"
                     >
@@ -162,6 +169,14 @@ const NavBar = () => {
                     to="/home"
                   >
                     List
+                  </RouterNavLink>
+                </NavItem>
+                <NavItem>
+                  <FontAwesomeIcon icon="user" className="mr-3" />
+                  <RouterNavLink
+                    to="/twitter"
+                  >
+                    Social Media
                   </RouterNavLink>
                 </NavItem>
                 <NavItem>
