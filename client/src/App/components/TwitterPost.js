@@ -18,6 +18,10 @@ class TwitterPost extends Component {
     }
   }
 
+  sendTweet = () => {
+    twitterAPI.sendTweet(this.state.tweetBody);
+  }
+
   onChange = (event) => {
     this.setState({
       tweetBody: event.target.value,
@@ -53,7 +57,8 @@ class TwitterPost extends Component {
   }
 
   submit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    this.sendTweet();
   }
 
   render() {
