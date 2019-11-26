@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import {Button,Form,FormGroup,Input,Row,Col,Container,Card,CardBody,CardHeader} from "reactstrap"
 import API from "../utils/API";
+import twitterAPI from "../utils/twitterAPI";
 
 class TwitterPost extends Component {
 
