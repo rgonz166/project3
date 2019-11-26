@@ -19,14 +19,14 @@ class BusinessInfo extends Component {
         console.log(this.state.auth0);
     }
 
-    handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-          [name]: value
-        });
-      };
+      handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
-      handleFormSubmit = e => {
+    submit = (e) => {
         e.preventDefault();
         const newVendor = {
             storeName: this.state.storeName,
@@ -52,7 +52,7 @@ class BusinessInfo extends Component {
                                     <FormGroup>
                                         <Input
                                             type="text"
-                                            name="owner"
+                                            name="contact"
                                             id="contact"
                                             placeholder="Owner"
 
@@ -61,7 +61,7 @@ class BusinessInfo extends Component {
                                     <FormGroup>
                                         <Input
                                             type="text"
-                                            name="storeName"
+                                            name="name"
                                             id="business-name"
                                             placeholder="Business name"
                                         />
@@ -85,7 +85,7 @@ class BusinessInfo extends Component {
                                         <Label for="category-list">Category</Label>
                                         <Input
                                             type="select"
-                                            name="categories"
+                                            name="select"
                                             id="category-list"
                                             placeholder="Select Business Category"
                                         >
@@ -100,7 +100,7 @@ class BusinessInfo extends Component {
                                         </Input>
                                     </FormGroup>
                                 </Form>
-                                <Button color="success" onClick={this.handleFormSubmit}>Submit</Button>
+                                <Button color="success" onClick={this.submit}>Submit</Button>
                             </CardBody>
                         </Card>
                     </Col>
