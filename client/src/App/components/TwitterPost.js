@@ -10,7 +10,7 @@ class TwitterPost extends Component {
       auth0: this.props.user,
       owner: '',
       tweetBody: '',
-      tags: '',
+      hashtags: '',
       maxChars: 280,
       tweetChars: 0,
       tweetCharsLeft:280
@@ -25,20 +25,30 @@ class TwitterPost extends Component {
     })
   }
 
-  getUser = (id) => {
+  setUserSettings = (id) => {
     API.getVendor(id)
       .then(res => {
-        console.log("vendor stuff",res.data);
+        var data = res.data[0];
+        this.setState({
+          owner: data.owner,
+          hashtags: data.hashtags.join(" "),
+          tweetBody: data.customTweet
+        });
+        this.updateCharsLeft();
       })
+  }
+
+  updateCharsLeft = () => {
+    this.setState({
+      tweetCharsLeft: this.state.maxChars - this.state.tweetBody.length,
+    });
   }
 
   // Note: add custom user tweet body from db in did mount
   componentDidMount(){
     console.log(this.state.auth0);
-    this.getUser(this.state.auth0);
-    this.setState({
-      tweetCharsLeft: this.state.maxChars - this.state.tweetBody.length,
-    })
+    this.setUserSettings(this.state.auth0);
+    this.updateCharsLeft();
   }
 
   submit = (e) => {

@@ -44,7 +44,7 @@ const App = () => {
             <PrivateRoute path="/validate" component={Validate} />
             <PrivateRoute path="/menu" render={()=>(<Menu user={user.sub} />)} />
             <PrivateRoute path="/home" component={Home} />
-            <PrivateRoute path="/info" render={()=><BusinessInfo user={user.sub} />} />
+            <PrivateRoute path="/info" render={()=>(<BusinessInfo user={user.sub} />)} />
             <PrivateRoute path="/list" component={List} />
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/twitter" render={() =>(<TwitterPost user={user.sub} />)} />
