@@ -1,5 +1,5 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faServer, faUtensils, faLink, faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faServer, faUtensils, faLink, faPowerOff, faUser, faComment } from "@fortawesome/free-solid-svg-icons";
 
 function initFontAwesome() {
   library.add(faServer);
@@ -7,6 +7,7 @@ function initFontAwesome() {
   library.add(faUser);
   library.add(faPowerOff);
   library.add(faUtensils);
+  library.add(faComment);
 }
 
 export default initFontAwesome;
