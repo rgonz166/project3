@@ -6,17 +6,21 @@ British
 Burgers
 California
 Chinese
+Dessert
 Eclectic
 Greek
 German
 Hawaiian
 Hot Dogs
-Italian
+Ice Cream
 Indian
+Italian
 Japanese
 Japanese Fusion
-Korian
+Korean
+Laotian
 Lobster
+Organic
 Mexican
 Mediterranean
 Middle Eastern
@@ -24,9 +28,15 @@ New York
 Peruvian
 Pizza
 Polish
+Sandwiches
+Sausage
+Shave Ice
+Smoothies
 Sea Food
 Sushi
 Tacos
 Thai
+Various
 Vegan
-Vegetarian`.split("\n");
+Vegetarian
+Waffles`.split("\n");
