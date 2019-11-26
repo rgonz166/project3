@@ -5,7 +5,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
 import TwitterPost from "./components/TwitterPost";
-//import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 import Validate from "./pages/Validate";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -51,6 +51,7 @@ const App = () => {
             <PrivateRoute path="/twitter" render={() =><TwitterPost user={user.sub} />} />
           </Switch>
         </Container>
+        <Footer />
       </div>
     </Router>
   );
