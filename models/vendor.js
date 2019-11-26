@@ -9,6 +9,8 @@ const vendorSchema = new Schema({
   categories: Array,
   hashtags: Array,
   location: String,
+  city: String,
+  state: String,
   status: { type: Boolean, default: false }, //False = closed ; True = open
   closingTime: String
 });
