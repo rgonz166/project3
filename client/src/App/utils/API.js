@@ -1,4 +1,6 @@
 import axios from "axios";
+import mongoose from 'mongoose';
+const ObjId = mongoose.Types.ObjectId;
 
 export default {
   // Get User(Vendor)
@@ -26,5 +28,16 @@ export default {
     const createdFood = { obj: foodObj, menu: menuRef };
     return axios.post("/api/food/", createdFood);
   },
+  // Create Menu
+  createMenu: function (obj){
+    return axios.post("/api/menu/", obj);
+  },
+  createVendor: function(obj){
+    console.log(`Menu is ${obj['menu']} and type of ${typeof(obj['menu'])}`);
+    obj['menu'] = ObjId(obj['menu']);
+    console.log(`Menu is ${obj['menu']} and type of ${typeof(obj['menu'])}`);
+    console.log("ObjectId'd the menu ref: ", obj);
+    return axios.post("/api/vendor/", obj);
+  }
   // pushFood
 };
