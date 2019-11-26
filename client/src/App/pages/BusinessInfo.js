@@ -1,22 +1,44 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardBody, CardHeader} from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardBody, CardHeader } from 'reactstrap';
 
- class BusinessInfo extends Component {
-     constructor(props){
-         super(props);
-         this.state ={
-             auth0: this.props.user,
-             owner: '',
-             storeName: '',
+class BusinessInfo extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            auth0: this.props.user,
+            owner: '',
+            storeName: '',
+            categories: '',
+            city: '',
+            state: ''
+        }
+    }
 
-         }
-     }
-     
-    submit = (e) => {
-        e.preventDefault()
+
+    componentDidMount() {
+        console.log(this.state.auth0);
+    }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+          [name]: value
+        });
+      };
+
+      handleFormSubmit = e => {
+        e.preventDefault();
+        const newVendor = {
+            storeName: this.state.storeName,
+            owner: this.state.owner,
+            ownerId: this.state.auth0,
+            categories: [this.state.categories],
+            city: this.state.city ? this.state.city : '',
+            state: this.state.state ? this.state.state : '',
+        }
 
     }
-    
+
     render() {
         const { } = this.props;
         return (
@@ -28,44 +50,44 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
                             <CardBody>
                                 <Form>
                                     <FormGroup>
-                                        <Input 
-                                        type="text" 
-                                        name="contact" 
-                                        id="contact" 
-                                        placeholder="Owner" 
-                                        
+                                        <Input
+                                            type="text"
+                                            name="owner"
+                                            id="contact"
+                                            placeholder="Owner"
+
                                         />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Input 
-                                        type="text" 
-                                        name="name" 
-                                        id="business-name" 
-                                        placeholder="Business name"                                
+                                        <Input
+                                            type="text"
+                                            name="storeName"
+                                            id="business-name"
+                                            placeholder="Business name"
                                         />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Input 
-                                        type="text" 
-                                        name="city" 
-                                        placeholder="City (optional)" 
+                                        <Input
+                                            type="text"
+                                            name="city"
+                                            placeholder="City (optional)"
                                         />
                                     </FormGroup>
                                     <FormGroup>
-                                        <Input 
-                                        type="text" 
-                                        name="state" 
-                                        placeholder="State (optional)" 
+                                        <Input
+                                            type="text"
+                                            name="state"
+                                            placeholder="State (optional)"
                                         />
                                     </FormGroup>
-                        
+
                                     <FormGroup>
-                                        <Label for="category-list">Category</Label>    
-                                        <Input 
-                                        type="select" 
-                                        name="select" 
-                                        id="category-list" 
-                                        placeholder="Select Business Category"
+                                        <Label for="category-list">Category</Label>
+                                        <Input
+                                            type="select"
+                                            name="categories"
+                                            id="category-list"
+                                            placeholder="Select Business Category"
                                         >
                                             <option>Select category</option>
                                             <option>Mexican</option>
@@ -78,7 +100,7 @@ import { Button, Form, FormGroup, Label, Input, Row, Col, Container, Card, CardB
                                         </Input>
                                     </FormGroup>
                                 </Form>
-                                <Button color="success" onClick={this.submit}>Submit</Button>
+                                <Button color="success" onClick={this.handleFormSubmit}>Submit</Button>
                             </CardBody>
                         </Card>
                     </Col>
