@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 // import { InfoWindow, Marker } from 'google-maps-react';
 // import vendorSeed from '../../../../scripts/seedDB'
 
+
+
+
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import CurrentLocation from './Maps';
 const mapStyles = {
@@ -17,6 +20,7 @@ export class MapContainer extends Component {
       selectedPlace: {}
     };
   
+    
     onMarkerClick = (props, marker, e) =>
       this.setState({
         selectedPlace: props,
@@ -41,7 +45,7 @@ export class MapContainer extends Component {
           centerAroundCurrentLocation
           google={this.props.google}
         >
-          <Marker onClick={this.onMarkerClick} name={"my location"} />
+          <Marker onClick={this.onMarkerClick} name={"my location"} icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}/>
           <Marker onClick = {this.onMarkerClick} name={"ecw"}
 position={{lat: 32.715736, lng: -117.161087}} />
 <Marker onClick = {this.onMarkerClick} name={'here'}
