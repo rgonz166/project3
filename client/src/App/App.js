@@ -4,7 +4,8 @@ import { Container } from "reactstrap";
 import PrivateRoute from "./components/PrivateRoute";
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
-//import Footer from "./components/Footer";
+import TwitterPost from "./components/TwitterPost";
+import Footer from "./components/Footer/Footer";
 import Validate from "./pages/Validate";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -12,7 +13,6 @@ import Home from './pages/Home';
 import List from './pages/List';
 import { useAuth0 } from "../react-auth0-spa";
 import history from "./utils/history";
-
 import BusinessInfo from './pages/BusinessInfo';
 import Landing from './components/Landing';
 import Menu from './pages/Menu/Menu';
@@ -48,10 +48,10 @@ const App = () => {
             <PrivateRoute path="/info" render={()=><BusinessInfo user={user.sub} />} />
             <PrivateRoute path="/list" component={List} />
             <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/twitter" render={() =><TwitterPost user={user.sub} />} />
           </Switch>
-          
         </Container>
-        
+        <Footer />
       </div>
     </Router>
   );

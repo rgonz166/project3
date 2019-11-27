@@ -38,9 +38,9 @@ const NavBar = () => {
 
   return (
     <div className="nav-container">
-      <Navbar style={{ backgroundColor: '#F6D24D' }} light expand="md">
+      <Navbar style={{ backgroundColor: '#fc0' }} light expand="md">
         <Container>
-          <img height='50px' width='60px' style={{marginRight: '10px'}} src={logo}></img>
+          <img height='50px' width='60px' style={{ marginRight: '10px' }} src={logo}></img>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
@@ -55,6 +55,8 @@ const NavBar = () => {
                 </NavLink>
               </NavItem>
             </Nav>
+
+            {/* Actually display on the screen */}
             <Nav className="d-none d-md-block" navbar>
               {!isAuthenticated && (
                 <NavItem>
@@ -96,6 +98,20 @@ const NavBar = () => {
                       <FontAwesomeIcon icon="server" className="mr-3" /> List
                     </DropdownItem>
                     <DropdownItem
+                      tag={RouterNavLink}
+                      to="/twitter"
+                      className="dropdown-profile"
+                    >
+                      <FontAwesomeIcon icon="comment" className="mr-3" /> Social Media
+                    </DropdownItem>
+                    <DropdownItem
+                      tag={RouterNavLink}
+                      to="/menu"
+                      className="dropdown-profile"
+                    >
+                      <FontAwesomeIcon icon="utensils" className="mr-3" /> Menu
+                    </DropdownItem>
+                    <DropdownItem
                       id="qsLogoutBtn"
                       onClick={() => logoutWithRedirect()}
                     >
@@ -120,6 +136,7 @@ const NavBar = () => {
                 </NavItem>
               </Nav>
             )}
+            {/* This is the Link to Route */}
             {isAuthenticated && (
               <Nav
                 className="d-md-none justify-content-between"
@@ -152,6 +169,22 @@ const NavBar = () => {
                     to="/home"
                   >
                     List
+                  </RouterNavLink>
+                </NavItem>
+                <NavItem>
+                  <FontAwesomeIcon icon="comment" className="mr-3" />
+                  <RouterNavLink
+                    to="/twitter"
+                  >
+                    Social Media
+                  </RouterNavLink>
+                </NavItem>
+                <NavItem>
+                  <FontAwesomeIcon icon="utensils" className="mr-3" />
+                  <RouterNavLink
+                    to="/menu"
+                  >
+                    Menu
                   </RouterNavLink>
                 </NavItem>
                 <NavItem>
