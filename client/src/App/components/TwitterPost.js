@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import {Button,Form,FormGroup,Input,Row,Col,Container,Card,CardBody,CardHeader} from "reactstrap"
 import API from "../utils/API";
-import twitterAPI from "../utils/twitterAPI";
 
 class TwitterPost extends Component {
 
@@ -18,9 +17,9 @@ class TwitterPost extends Component {
     }
   }
 
-  sendTweet = () => {
-    twitterAPI.sendTweet(this.state.tweetBody);
-  }
+  // sendTweet = () => {
+  //   twitterAPI.sendTweet(this.state.tweetBody);
+  // }
 
   onChange = (event) => {
     this.setState({
@@ -58,7 +57,7 @@ class TwitterPost extends Component {
 
   submit = (e) => {
     e.preventDefault();
-    this.sendTweet();
+    // this.sendTweet();
   }
 
   render() {
