@@ -1,12 +1,12 @@
 .autoComplete{
     width: 100%;
     font-size: 14px;
-    color: rgba(0,0,0,.73);
+    color: rgba(0,0,0,.9);
 }
 .autoComplete input{
     width: 100%;
     font-size: 14px;
-    color: rgba(0,0,0,.73);
+    color: rgba(0,0,0,.9);
     padding: 10px 5px;
     outline: none;
 }

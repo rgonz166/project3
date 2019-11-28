@@ -91,9 +91,7 @@ class Menu extends Component {
       <Container >
         <Row>
           <Col md="4">
-
             <h2>Add Menu Items</h2>
-
             <Form>
               <FormGroup>
                 <Input
@@ -131,7 +129,6 @@ class Menu extends Component {
             </Form>
           </Col>
           <Col md={{ size: 8 }} sm="12">
-
             <h2 className="text-center">Menu</h2>
             <Card className="menu-display text-center">
               {this.state.menuitems.length ? (
@@ -157,7 +154,6 @@ class Menu extends Component {
                 )}
             </Card>
           </Col>
-
         </Row>
       </Container>
     );
