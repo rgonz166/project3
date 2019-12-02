@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Card, Col, Row, Container, Form, FormGroup, ListGroup, ListGroupItem, Input, Button } from 'reactstrap';
 import API from '../../utils/API';
-import "./menu.css";
+import "./Menu.css";
 
 class Menu extends Component {
   constructor(props) {

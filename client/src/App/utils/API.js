@@ -9,7 +9,7 @@ export default {
   },
   getVendorLocation: function (id) {
     axios.get("/api/vendor/" + id)
-      .then(data => { return { location } = data.data[0]; })
+      .then(data => { let { location } = data.data[0]; return location })
       .catch(err => { return err });
   },
   // Accepts Object with two keys (id and location) with id refering to vendor and location being Long+Lat in string csv notation(?)
