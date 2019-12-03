@@ -5,7 +5,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
 import TwitterPost from "./components/TwitterPost";
-import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer";
 import Validate from "./pages/Validate";
 import Profile from "./pages/Profile";
 import Home from './pages/Home';
@@ -14,7 +14,7 @@ import { useAuth0 } from "../react-auth0-spa";
 import history from "./utils/history";
 import BusinessInfo from './pages/BusinessInfo';
 import Landing from './components/Landing';
-import Menu from './pages/Menu/Menu';
+import Menu from './pages/Menu';
 import Customer from './pages/Customer';
 // import vendorSeed from '../../../scripts/seedDB'
 
