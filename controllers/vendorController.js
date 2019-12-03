@@ -22,8 +22,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
+    console.log("Requested update obj: ", req.body);
     db.Vendor
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id }, { $push: req.body.obj})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
