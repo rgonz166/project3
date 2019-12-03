@@ -48,6 +48,17 @@ export default {
     console.log(`Menu is ${obj['menu']} and type of ${typeof (obj['menu'])}`);
     console.log("ObjectId'd the menu ref: ", obj);
     return axios.post("/api/vendor/", obj);
+  },
+  // Update vendor info
+  updateVendor: function (object) {
+    let body = {
+      owner: object.owner,
+      storeName: object.storeName,
+      city: object.city,
+      state: object.state,
+      categories: object.categories
+    }
+    console.log(body);
+    return axios.put("/api/vendor/" + object.id, body);
   }
-  // pushFood
 };
