@@ -101,7 +101,7 @@ class BusinessInfo extends Component {
             .then(reply => {
                 
                 this.setState({ status: 2 });
-                console.log("status " + this.state.status);
+                this.props.setIsUpdated(false);
             }).catch(err => console.log("Vendor err: ", err));
     }
 

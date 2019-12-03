@@ -52,7 +52,6 @@ export default {
   // Update vendor info
   updateVendor: function (object) {
     let body = {
-
       owner: object.owner,
       storeName: object.storeName,
       city: object.city,
