@@ -1,4 +1,8 @@
 const router = require('express').Router();
 const twitterController = require('../../controllers/twitterController');
 
-router.route("")
+// Matches with /twitter
+router.route("/")
+    .post(twitterController.postTweet);
+
+module.exports = router;
