@@ -8,22 +8,26 @@ import API from "../utils/API"
 
 const Profile = () => {
   const { loading, user } = useAuth0();
-  
+  const[isUpdated, setIsUpdated] = useState(false);
   const[vendorData, setVendorData] = useState([]);
 
-
   useEffect(() => {
+    if(!isUpdated){
+      getVendorInfo();
+      setIsUpdated(true);
+    }
+  });
+
+  function getVendorInfo () {
     API.getVendor(user.sub)
-        .then(result => {
-            console.log(result)
-            if(result.data && result.data.length){
-              const vendorInfo = result.data[0] != null ? result.data[0] : null;
-              setVendorData(vendorInfo);
-            } 
-          })
-    
-  }, [vendorData]);
-  
+      .then(result => {
+          console.log(result)
+          if(result.data && result.data.length){
+            const vendorInfo = result.data[0] != null ? result.data[0] : null;
+            setVendorData(vendorInfo);
+          } 
+        })
+  }
   if (loading || !user) {
     return <Loading />;
   }
@@ -37,12 +41,9 @@ const Profile = () => {
           <Col sm="12">
               <Card >
                 <CardHeader tag="h5" className="text-center" style={{ color: '#FA783F' }}>
-                  Business Summary
+                  Business Info Summary
                 </CardHeader>
                 <CardBody>
-                  <CardTitle tag="h5" >
-                   
-                  </CardTitle>
                   <CardText>Owner Name: {vendorData ? vendorData.owner : ""}</CardText><hr></hr>
                   <CardText>Business Name: {vendorData ? vendorData.storeName : ""}</CardText><hr></hr>
                   <CardText>Category: {vendorData ? vendorData.categories : ""}</CardText><hr></hr>
@@ -51,7 +52,7 @@ const Profile = () => {
               </CardBody>
               <CardFooter tag="h5" className="text-center" style={{ color: '#FA783F' }} id="toggler">Update Business Information</CardFooter>
               <UncontrolledCollapse toggler="#toggler">
-                <BusinessInfo vendorId={user.sub} />
+                <BusinessInfo vendorId={user.sub} setIsUpdated={setIsUpdated} />
               </UncontrolledCollapse>
             </Card>
           </Col>
