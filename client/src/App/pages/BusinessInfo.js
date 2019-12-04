@@ -26,7 +26,6 @@ class BusinessInfo extends Component {
         
         if(this.props.vendorId){
             this.setState({isupdate: true});
-            
             API.getVendor(this.props.vendorId)
             .then(result => {
                 console.log(result)
@@ -40,7 +39,6 @@ class BusinessInfo extends Component {
                   this.setState({city: this.state.vendor.city});
                   this.setState({state: this.state.vendor.state});
                   this.setState({menu: this.state.vendor.menu});
-                  
                 } 
             })
         }
@@ -85,6 +83,7 @@ class BusinessInfo extends Component {
                     }).catch(err => console.log("Vendor err: ", err));
             }).catch(err => console.log(err));
     }
+
     updateVendor = e => {
         e.preventDefault();
         let updatedVendor = {
@@ -190,7 +189,6 @@ class BusinessInfo extends Component {
             case 2:
                 return <Redirect to='/profile' />
         }
-
     }
 }
 export default BusinessInfo;
