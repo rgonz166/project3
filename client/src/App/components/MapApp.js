@@ -43,10 +43,6 @@ export class MapContainer extends Component {
   // } 
   
     render() {
-
-     
-      
-    
       const product = products[0];
     
       return (
@@ -63,7 +59,6 @@ position={{lat: 32.7560, lng: -117.161087}} />
 <Marker onClick = {this.onMarkerClick} name={'here'}
 position={{lat: 32.842674, lng: -117.257767}} />
 
- 
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}

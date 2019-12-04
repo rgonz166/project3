@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import {Button,Form,FormGroup,Input,Row,Col,Container,Card,CardBody,CardHeader} from "reactstrap"
+import API from "../utils/API";
 
 class TwitterPost extends Component {
 
@@ -9,12 +10,16 @@ class TwitterPost extends Component {
       auth0: this.props.user,
       owner: '',
       tweetBody: '',
-      tags: '',
+      hashtags: '',
       maxChars: 280,
       tweetChars: 0,
       tweetCharsLeft:280
     }
   }
+
+  // sendTweet = () => {
+  //   twitterAPI.sendTweet(this.state.tweetBody);
+  // }
 
   onChange = (event) => {
     this.setState({
@@ -24,15 +29,42 @@ class TwitterPost extends Component {
     })
   }
 
+  setUserSettings = (id) => {
+    API.getVendor(id)
+      .then(res => {
+        var data = res.data[0];
+        this.setState({
+          owner: data.owner,
+          hashtags: data.hashtags.join(" "),
+          tweetBody: data.customTweet
+        });
+        this.updateCharsLeft();
+      })
+  }
+
+  updateCharsLeft = () => {
+    this.setState({
+      tweetCharsLeft: this.state.maxChars - this.state.tweetBody.length,
+    });
+  }
+
+  sendTweet = () => {
+    API.sendTweet(this.state.tweetBody)
+      .then(result => {
+        console.log("Sending Tweet", result);
+      })
+      .catch(err => console.log(err));
+  }
+
   // Note: add custom user tweet body from db in did mount
   componentDidMount(){
-    this.setState({
-      tweetCharsLeft: this.state.maxChars - this.state.tweetBody.length
-    })
+    this.setUserSettings(this.state.auth0);
+    this.updateCharsLeft();
   }
 
   submit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    this.sendTweet();
   }
 
   render() {
