@@ -7,7 +7,7 @@ const vendorSchema = new Schema({
   ownerId: { type: String, required: true },
   menu: { type: Schema.Types.ObjectId, ref: "Menu" },
   categories: Array,
-  hashtags: Array,
+  customTweet: {type: String, default: ''},
   location: String,
   city: String,
   state: String,
