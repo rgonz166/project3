@@ -48,6 +48,13 @@ class TwitterPost extends Component {
     });
   }
 
+  sendTweet = () => {
+    API.sendTweet(this.state.tweetBody)
+      .then(result => {
+        console.log("Sending Tweet", result);
+      })
+  }
+
   // Note: add custom user tweet body from db in did mount
   componentDidMount(){
     console.log(this.state.auth0);
