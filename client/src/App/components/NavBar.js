@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import VendorGeo from "./VendorLocation"
 
 import {
   Collapse,
@@ -105,6 +106,12 @@ const NavBar = () => {
                       <FontAwesomeIcon icon="comment" className="mr-3" /> Social Media
                     </DropdownItem>
                     <DropdownItem
+                      className="dropdown-profile"
+                    >
+                      <VendorGeo><FontAwesomeIcon icon="marker" className="mr-3" /></VendorGeo>
+                    </DropdownItem>
+
+                    <DropdownItem
                       tag={RouterNavLink}
                       to="/menu"
                       className="dropdown-profile"
@@ -179,6 +186,10 @@ const NavBar = () => {
                     Social Media
                   </RouterNavLink>
                 </NavItem>
+                <NavItem>
+                  <VendorGeo><FontAwesomeIcon icon="comment" className="mr-3" /></VendorGeo>
+                </NavItem>
+            
                 <NavItem>
                   <FontAwesomeIcon icon="utensils" className="mr-3" />
                   <RouterNavLink
