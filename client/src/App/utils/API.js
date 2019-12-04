@@ -58,8 +58,15 @@ export default {
       state: object.state,
       categories: object.categories
     }
-    console.log(body);
+    console.log(object);
     return axios.put("/api/vendor/" + object.id, body);
+  },
+  // Update vendor custom tweet
+  updateCustomTweet: function(object) {
+    let tweet = {
+      customTweet: object.message
+    }
+    return axios.put("/api/vendor/" + object.id, tweet)
   },
   // send tweet
   sendTweet: function(obj) {

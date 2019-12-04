@@ -56,6 +56,10 @@ class TwitterPost extends Component {
       .catch(err => console.log(err));
   }
 
+  updateCustomTweet = () => {
+    
+  }
+
   // Note: add custom user tweet body from db in did mount
   componentDidMount(){
     this.setUserSettings(this.state.auth0);
