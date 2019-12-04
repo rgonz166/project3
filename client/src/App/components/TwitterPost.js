@@ -64,7 +64,7 @@ class TwitterPost extends Component {
 
   submit = (e) => {
     e.preventDefault();
-    // this.sendTweet();
+    this.sendTweet();
   }
 
   render() {
