@@ -11,7 +11,7 @@ const vendorSchema = new Schema({
   location: String,
   city: String,
   state: String,
-  status: { type: Boolean, default: false }, //False = closed ; True = open
+  status: { type: Boolean, required: true, default: false }, //False = closed ; True = open
   closingTime: String
 });
 

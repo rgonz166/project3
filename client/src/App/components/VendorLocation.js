@@ -5,6 +5,7 @@ class VendorGeo extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      func: props.func,
       icon: props.icon,
       class: props.className,
       text: props.children,
@@ -13,17 +14,18 @@ class VendorGeo extends Component {
     }
   }
 
-  componentDidUpdate() {
-    this.state.latitude ? console.log(`We have something here ${this.state.latitude} , ${this.state.longitude}`)
-      : console.log("Not Lat+Long yet..");
-  }
+  // componentDidUpdate() {
+  //   this.state.latitude ? console.log(`We have something here ${this.state.latitude} , ${this.state.longitude}`)
+  //     : console.log("Not Lat+Long yet..");
+  // }
 
   position = async () => {
+    this.state.func();
     await navigator.geolocation.getCurrentPosition(
       position => this.setState({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
-      }, console.log("Pos", position.coords)),
+      }),
       err => console.log(err)
     );
   }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import VendorGeo from "./VendorLocation"
+import API from "../utils/API";
 
 import {
   Collapse,
@@ -24,9 +25,22 @@ import { useAuth0 } from "../../react-auth0-spa";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  let [storeOpen, setStoreOpen] = useState(false);
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
-
+  const shopStatus = () => {
+    API.getVendor(user.sub)
+      .then(vendor => {
+        const openShop = () => { setStoreOpen(storeOpen = true) }
+        const closeShop = () => { setStoreOpen(storeOpen = false) }
+        vendor.data[0].status === false ? openShop() : closeShop();
+        const newStatus = { id: vendor.data[0]._id, status: storeOpen }
+        API.updateStatus(newStatus)
+          .then(updated => { })
+          .catch(err => console.log("Updated Err:", err));
+      })
+      .catch(err => console.log(err));
+  }
 
   const CompanyLogo = () => {
     return <img src="../assets/tortaLogo_transparent.png"></img>
@@ -109,8 +123,10 @@ const NavBar = () => {
                     </DropdownItem>
                     <DropdownItem
                       className="dropdown-profile"
-                    >
-                      <VendorGeo icon="map-marker-alt" className="mr-3">Go Live</VendorGeo>
+                    >{storeOpen && (
+                      <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Close Up</VendorGeo>)}
+                      {!storeOpen && (
+                      <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Go Live</VendorGeo>)}
                     </DropdownItem>
 
                     <DropdownItem
@@ -194,7 +210,7 @@ const NavBar = () => {
                 <NavItem>
                   <VendorGeo><FontAwesomeIcon icon="comment" className="mr-3" /></VendorGeo>
                 </NavItem>
-            
+
                 <NavItem>
                   <FontAwesomeIcon icon="utensils" className="mr-3" />
                   <RouterNavLink
