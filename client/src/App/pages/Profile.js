@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-
-import { Card, UncontrolledCollapse, Collapse, CardTitle, CardFooter, CardText, CardBody, CardHeader,Container, Row, Col } from 'reactstrap';
+import { Card, UncontrolledCollapse, CardFooter, CardText, CardBody, CardHeader,Container, Row, Col } from 'reactstrap';
 import Loading from "../components/Loading";
 import { useAuth0 } from "../../react-auth0-spa";
 import BusinessInfo from "../pages/BusinessInfo";
@@ -32,8 +31,6 @@ const Profile = () => {
     return <Loading />;
   }
 
-  
-
   return (
     <div>
       <Container className="mb-5">
@@ -59,7 +56,6 @@ const Profile = () => {
       </Row>
     </Container>
     </div>
-    
   );
 };
 
