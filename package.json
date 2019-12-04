@@ -30,12 +30,8 @@
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "json-loader": "^0.5.7"
-=======
     "@babel/cli": "^7.7.4",
     "@babel/core": "^7.7.4"
->>>>>>> master
   },
   "eslintConfig": {
     "extends": "react-app"
