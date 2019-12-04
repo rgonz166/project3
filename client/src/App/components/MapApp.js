@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // import vendorSeed from '../../../../scripts/seedDB'
 
 
-
+import {products} from './places';
 
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import CurrentLocation from './Maps';
@@ -37,8 +37,18 @@ export class MapContainer extends Component {
       }
     };
     
+  //  filterCategory = (e) =>{
+  //   var categoryPicked = e;
+  //   console.log(categoryPicked+ "category passed to filter category")
+  // } 
   
     render() {
+
+     
+      
+    
+      const product = products[0];
+    
       return (
         
         <CurrentLocation
@@ -46,7 +56,7 @@ export class MapContainer extends Component {
           google={this.props.google}
         >
           <Marker onClick={this.onMarkerClick} name={"my location"} icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}/>
-          <Marker onClick = {this.onMarkerClick} name={"ecw"}
+          <Marker onClick = {this.onMarkerClick} name={product.Name}
 position={{lat: 32.715736, lng: -117.161087}} />
 <Marker onClick = {this.onMarkerClick} name={'here'}
 position={{lat: 32.7560, lng: -117.161087}} />
@@ -73,6 +83,10 @@ export default GoogleApiWrapper({
 })(MapContainer);
 
 export const categoryFilter = (e) =>{
+
+  
+  
   console.log(e + " here");
+  //this.filterCategory(e);//figure out how to pass this to the function
       }
   
