@@ -68,6 +68,15 @@ const vendorSeed = [
     categories: ["Tacos", "Vegan", "Glutten-free"],
     hashtags: ["#vegantacos","#vegan", "#savetheworldandstopkillinganimalsplease"],
     closingTime: "8pm"
+  },
+  {
+    storeName: "Tacos Ruly",
+    owner: "Raul Gonzalez",
+    ownerId: "auth0|5dd75fe0d8fdd50ed0133e4e",
+    categories: ["Tacos","Mexican","CA"],
+    customTweet: "This is my custom tweet",
+    hashtags: ["#tacosruly","#besttacosintown"],
+    closingTime: "10pm"
   }
 ];
 
