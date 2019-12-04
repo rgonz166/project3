@@ -3,20 +3,18 @@ const mongoose = require("mongoose");
 const Thing = mongoose.Types.ObjectId;
 const db = require("../models");
 
-// This file empties the Books collection and inserts the books below
-
 mongoose.connect(
   process.env.MONGODB_URI ||
   "mongodb://localhost/vendorlist"
 );
 
-console.log("TEST", Thing);
-
+// Created Seeds for our google auth accounts with fake starting Menu's.
+// For presentation we can show both an already created || Creating new Menu
 const vendorSeed = [
   {
     storeName: "Los Tacos",
-    owner: "Jose Ruiz",
-    ownerId: "auth0|u9fd8ur932uifeas2",
+    owner: "Hanna Tefera (G)",
+    ownerId: "google-oauth2|112903226627832526877",
     menu: Thing("000000000000000000000001"),
     categories: ["Tacos", "Mexican", "TJ"],
     hashtags: ["#lostacos","#tacos"],
@@ -24,59 +22,29 @@ const vendorSeed = [
   },
   {
     storeName: "The Tacos",
-    owner: "Bob Dylan",
+    owner: "Ernie Sanchez (G)",
     menu: Thing("000000000000000000000002"),
-    ownerId: "auth0|lkdfsnofw99392",
+    ownerId: "google-oauth2|108652893752770055277",
     categories: ["Tacos", "Fancy"],
     hashtags: ["#tacotuesday","#tacos"],
     closingTime: "6pm"
   },
   {
     storeName: "Tacos-r-us",
-    owner: "Pocho Chocho",
-    ownerId: "auth0|291083nkj21",
+    owner: "Andres Ruiz (G)",
+    menu: Thing("000000000000000000000003"),
+    ownerId: "google-oauth2|105235722484386154166",
     categories: ["Tacos", "Chicano", "TJ"],
     closingTime: "8pm"
   },
   {
     storeName: "Los 3 Tacos",
-    owner: "Raul Gonzalez",
-    menu: Thing("000000000000000000000003"),
-    ownerId: "auth0|lkjs9we89dsa",
+    owner: "Raul Gonzalez (G)",
+    menu: Thing("000000000000000000000004"),
+    ownerId: "google-oauth2|105492094761663677396",
     categories: ["Tacos", "Mexican", "TJ", "Cheap"],
     hashtags: ["#lostacos","#tacos", "#tjtacos"],
     closingTime: "1am"
-  },
-  {
-    storeName: "El Taquero",
-    owner: "Ernesto Sanchez",
-    ownerId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Mexican", "TJ"],
-    hashtags: ["#lostacos","#tacos"],
-    closingTime: "8pm"
-  },
-  {
-    storeName: "Chicano Soul Tacos",
-    owner: "Andres Ruiz",
-    ownerId: "auth0|5dd0577c460ca50e25ac3769",
-    menu: Thing("000000000000000000000003")
-  },
-  {
-    storeName: "Tacos Veganos",
-    owner: "Hanna Tefera",
-    ownerId: "auth0|u9fd8ur932uifeas2",
-    categories: ["Tacos", "Vegan", "Glutten-free"],
-    hashtags: ["#vegantacos","#vegan", "#savetheworldandstopkillinganimalsplease"],
-    closingTime: "8pm"
-  },
-  {
-    storeName: "Tacos Ruly",
-    owner: "Raul Gonzalez",
-    ownerId: "auth0|5dd75fe0d8fdd50ed0133e4e",
-    categories: ["Tacos","Mexican","CA"],
-    customTweet: "This is my custom tweet",
-    hashtags: ["#tacosruly","#besttacosintown"],
-    closingTime: "10pm"
   }
 ];
 
@@ -95,6 +63,11 @@ const menuSeed = [
     _id: Thing("000000000000000000000003"),
     menuName: "Echate Algo Guey",
     food: [Thing("000000000000000000000005"),Thing("000000000000000000000006"),Thing("000000000000000000000007")]
+  },
+  {
+    _id: Thing("000000000000000000000004"),
+    menuName: "Echate Algo Guey",
+    food: [Thing("000000000000000000000008"),Thing("000000000000000000000009"),Thing("000000000000000000000010")]
   }
 ];
 
@@ -135,6 +108,21 @@ const foodSeed = [
     _id: Thing("000000000000000000000007"),
     foodName: "Tacos De Buche",
     price: 2.99
+  },
+  {
+    _id: Thing("000000000000000000000008"),
+    foodName: "Tacos De Perro",
+    price: 4.99
+  },
+  {
+    _id: Thing("000000000000000000000009"),
+    foodName: "Tacos Al Vapor",
+    price: 2.49
+  },
+  {
+    _id: Thing("000000000000000000000010"),
+    foodName: "Mini Tacos",
+    price: 0.99
   }
 ];
 

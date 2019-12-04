@@ -1,32 +1,36 @@
 import React, { Component } from 'react'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class VendorGeo extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      icon: props.icon,
+      class: props.className,
+      text: props.children,
       latitude: null,
       longitude: null,
     }
   }
 
+  componentDidUpdate() {
+    this.state.latitude ? console.log(`We have something here ${this.state.latitude} , ${this.state.longitude}`)
+      : console.log("Not Lat+Long yet..");
+  }
+
   position = async () => {
     await navigator.geolocation.getCurrentPosition(
-      position => this.setState({ 
-        latitude: position.coords.latitude, 
+      position => this.setState({
+        latitude: position.coords.latitude,
         longitude: position.coords.longitude
-      }, newState => console.log(newState)), 
+      }, console.log("Pos", position.coords)),
       err => console.log(err)
     );
-    console.log("Here is the lat: " + this.state.latitude);
-    console.log("Here is the long: " + this.state.longitude);
   }
 
   render() {
     return (
-      <div>
-        <button onClick={this.position} className='Filter'>Go Live</button>
-      </div>
-    );
+      <div onClick={this.position}><FontAwesomeIcon className={this.state.class} icon={this.state.icon} />{this.state.text}</div>);
   }
 }
 

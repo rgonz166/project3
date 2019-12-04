@@ -110,7 +110,7 @@ const NavBar = () => {
                     <DropdownItem
                       className="dropdown-profile"
                     >
-                      <VendorGeo><FontAwesomeIcon icon="marker" className="mr-3" /></VendorGeo>
+                      <VendorGeo icon="map-marker-alt" className="mr-3">Go Live</VendorGeo>
                     </DropdownItem>
 
                     <DropdownItem
