@@ -53,11 +53,11 @@ class TwitterPost extends Component {
       .then(result => {
         console.log("Sending Tweet", result);
       })
+      .catch(err => console.log(err));
   }
 
   // Note: add custom user tweet body from db in did mount
   componentDidMount(){
-    console.log(this.state.auth0);
     this.setUserSettings(this.state.auth0);
     this.updateCharsLeft();
   }

@@ -63,6 +63,6 @@ export default {
   },
   // send tweet
   sendTweet: function(obj) {
-    return axios.post("/api/twitter", obj);
+    return axios.post("/api/twitter", {body: obj});
   }
 };
