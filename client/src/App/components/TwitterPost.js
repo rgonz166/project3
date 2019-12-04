@@ -57,7 +57,10 @@ class TwitterPost extends Component {
   }
 
   updateCustomTweet = () => {
-    
+    let tweet = {
+      id: this.state.auth0,
+      message: this.state.tweetBody
+    }
   }
 
   // Note: add custom user tweet body from db in did mount
