@@ -3,6 +3,7 @@ import Searchbar from '../components/Searchbar';
 import GoogleApiWrapper from '../components/MapApp';
 import { Container, Row, Col } from 'reactstrap';
 
+
 const Customer = () => {
   return (
     <Container className="mb-3">
