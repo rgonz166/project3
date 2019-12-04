@@ -18,6 +18,11 @@ app.use(express.json());
 app.use(routes);
 
 // Connect to the Mongo DB
+
+// For WiFi w/o access to mLab
+// mongoose.connect("mongodb://localhost/vendorlist" || process.env.MONGODB_URI);
+
+// For WiFi w/o restrictions
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/vendorlist");
 
 

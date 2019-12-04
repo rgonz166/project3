@@ -59,6 +59,7 @@ const NavBar = () => {
 
             {/* Actually display on the screen */}
             <Nav className="d-none d-md-block" navbar>
+              {/* If the user is NOT logged in, display login button */}
               {!isAuthenticated && (
                 <NavItem>
                   <Button
@@ -71,6 +72,7 @@ const NavBar = () => {
                   </Button>
                 </NavItem>
               )}
+              {/* if the user IS logged in, display the circle drop down menu */}
               {isAuthenticated && (
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret id="profileDropDown">
@@ -108,7 +110,7 @@ const NavBar = () => {
                     <DropdownItem
                       className="dropdown-profile"
                     >
-                      <VendorGeo><FontAwesomeIcon icon="marker" className="mr-3" /></VendorGeo>
+                      <VendorGeo icon="map-marker-alt" className="mr-3">Go Live</VendorGeo>
                     </DropdownItem>
 
                     <DropdownItem
@@ -129,6 +131,9 @@ const NavBar = () => {
                 </UncontrolledDropdown>
               )}
             </Nav>
+
+
+            {/* if the user is NOT logged in */}
             {!isAuthenticated && (
               <Nav className="d-md-none" navbar>
                 <NavItem>
