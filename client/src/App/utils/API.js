@@ -60,5 +60,9 @@ export default {
     }
     console.log(body);
     return axios.put("/api/vendor/" + object.id, body);
+  },
+  // send tweet
+  sendTweet: function(obj) {
+    return axios.post("/api/twitter", obj);
   }
 };
