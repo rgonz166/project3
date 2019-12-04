@@ -107,7 +107,7 @@ export class CurrentLocation extends React.Component {
         // const style = Object.assign({}, mapStyles.map, {height: '100vh', width: '100%'});
        return (
          <div>
-           <div style={{height: '100vh', width: '100%'}} ref="map">
+           <div style={{height: '50vh', width: '100%'}} ref="map">
              Loading map...
            </div>
            {this.renderChildren()}
