@@ -8,7 +8,6 @@ import {
   Container,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -41,7 +40,12 @@ const NavBar = () => {
     <div className="nav-container">
       <Navbar style={{ backgroundColor: '#fc0' }} light expand="md">
         <Container>
-          <img height='50px' width='60px' style={{ marginRight: '10px' }} src={logo} alt="Mheels logo"></img>
+          <NavLink 
+          tag={RouterNavLink}
+          to="/"
+          >
+            <img height='50px' width='60px' style={{ marginRight: '10px' }} src={logo} alt="Mheels logo"></img>
+          </NavLink>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
