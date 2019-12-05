@@ -15,12 +15,17 @@ const mapStyles = {
 };
 
 export class MapContainer extends Component {
-  state = {
-    vendors: null,
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      funcMenu: props.menu,
+      funcActive: props.active,
+      vendors: null,
+      showingInfoWindow: false,
+      activeMarker: null,
+      selectedPlace: {}
+    };
+  }
 
   componentDidMount() {
     this.grabVendors();
@@ -33,6 +38,8 @@ export class MapContainer extends Component {
   };
 
   onMarkerClick = (props, marker, e) => {
+    this.state.funcMenu(props.menu);
+    this.state.funcActive(true);
     console.log("This here be the props:", props);
     this.setState({
       selectedPlace: props,
@@ -42,6 +49,7 @@ export class MapContainer extends Component {
   }
 
   onClose = props => {
+    this.state.funcActive(false);
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
@@ -64,11 +72,10 @@ export class MapContainer extends Component {
         centerAroundCurrentLocation
         google={this.props.google}
       >
-
         {/* Start looping thru vendors if exists */}
         {this.state.vendors && (
           this.state.vendors.map(vendor => (
-            <Marker onClick={this.onMarkerClick} name={vendor.storeName} position={{ lat: vendor.location[0], lng: vendor.location[1] }} />
+            <Marker onClick={this.onMarkerClick} name={vendor.storeName} menu={vendor.menu} position={{ lat: vendor.location[0], lng: vendor.location[1] }} />
           ))
         )}
         {/* <Marker onClick={this.onMarkerClick} name={"my location"} icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"} />
