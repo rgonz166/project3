@@ -28,7 +28,6 @@ class TwitterPost extends Component {
   }
 
   setUserSettings = (id) => {
-    console.log(id);
     API.getVendor(id)
       .then(res => {
         var data = res.data[0];
@@ -68,9 +67,6 @@ class TwitterPost extends Component {
       message: this.state.tweetBody
     }
     API.updateCustomTweet(tweet)
-      .then(result => {
-        console.log("saving result", result);
-      })
       .catch(err => console.log(err));
   }
 
