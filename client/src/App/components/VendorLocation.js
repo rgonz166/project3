@@ -20,12 +20,14 @@ class VendorGeo extends Component {
   // }
 
   position = async () => {
-    this.state.func();
     await navigator.geolocation.getCurrentPosition(
-      position => this.setState({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      }),
+      position => {
+        this.state.func([position.coords.latitude, position.coords.longitude]);
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        });
+      },
       err => console.log(err)
     );
   }

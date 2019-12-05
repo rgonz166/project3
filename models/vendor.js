@@ -8,7 +8,7 @@ const vendorSchema = new Schema({
   menu: { type: Schema.Types.ObjectId, ref: "Menu" },
   categories: Array,
   hashtags: Array,
-  location: String,
+  location: Array,
   city: String,
   state: String,
   status: { type: Boolean, required: true, default: false }, //False = closed ; True = open
