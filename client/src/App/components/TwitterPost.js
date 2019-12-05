@@ -103,6 +103,10 @@ class TwitterPost extends Component {
                       >
                         Characters Left: <span style={(this.state.tweetCharsLeft < 0)?{color:"red"}:{}}>{this.state.tweetCharsLeft}</span>
                       </p>
+                      <label className="switch">
+                        <input type="checkbox" />
+                          <span className="slider round"></span>
+                      </label>
                     </FormGroup>
                   </Form>
                   <Button color="success" onClick={this.submit}>Submit</Button>
