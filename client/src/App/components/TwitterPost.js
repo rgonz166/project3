@@ -45,7 +45,6 @@ class TwitterPost extends Component {
   }
 
   handleToggle = () => {
-    console.log("targeted");
     let tempVal = this.state.toggleValue ? 0 : 1;
     this.setState({
       toggleValue: tempVal
@@ -65,6 +64,7 @@ class TwitterPost extends Component {
       id: this.state.auth0,
       message: this.state.tweetBody
     }
+    // add custom tweet api call
   }
 
   // Note: add custom user tweet body from db in did mount
@@ -117,7 +117,14 @@ class TwitterPost extends Component {
 													{this.state.tweetCharsLeft}
 												</span>
 											</p>
-                      <Switch value={this.state.toggleValue} onChange={this.handleToggle}/>
+                      <Switch style={{marginTop: '7px'}} value={this.state.toggleValue} onChange={this.handleToggle}/>
+                      <span style={{
+                        marginLeft: '5px',
+                        color: '#858585',
+                        fontSize: '14px'
+                      }}>
+                        {this.state.toggleValue ? "This is true" : "This is false"}
+                      </span>
 										</FormGroup>
 									</Form>
 									<Button color="success" onClick={this.submit}>
