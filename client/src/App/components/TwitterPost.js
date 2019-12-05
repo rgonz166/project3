@@ -17,10 +17,6 @@ class TwitterPost extends Component {
     }
   }
 
-  // sendTweet = () => {
-  //   twitterAPI.sendTweet(this.state.tweetBody);
-  // }
-
   onChange = (event) => {
     this.setState({
       tweetBody: event.target.value,
@@ -35,7 +31,6 @@ class TwitterPost extends Component {
         var data = res.data[0];
         this.setState({
           owner: data.owner,
-          hashtags: data.hashtags.join(" "),
           tweetBody: data.customTweet
         });
         this.updateCharsLeft();
