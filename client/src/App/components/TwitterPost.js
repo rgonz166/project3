@@ -10,7 +10,6 @@ class TwitterPost extends Component {
       auth0: this.props.user,
       owner: '',
       tweetBody: '',
-      hashtags: '',
       maxChars: 280,
       tweetChars: 0,
       tweetCharsLeft:280
