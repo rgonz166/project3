@@ -15,7 +15,8 @@ export default {
   // Accepts Object with two keys (id and location) with id refering to vendor and location being Long+Lat in string csv notation(?)
   setVendorLocation: function (obj) {
     const { id, location } = obj;
-    return axios.put("/api/vendor/" + id, { obj: location });
+    console.log(location);
+    return axios.put("/api/vendor/" + id, location);
   },
   // Gets every vendor
   getVendors: function () {
@@ -58,12 +59,9 @@ export default {
       state: object.state,
       categories: object.categories
     }
-    console.log(body);
     return axios.put("/api/vendor/" + object.id, body);
   },
   updateStatus: function (object) {
-    console.log(object.status);
-    console.log(typeof(object.status));
     const status = {
       status: object.status
     }

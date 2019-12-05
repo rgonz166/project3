@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import VendorGeo from "./VendorLocation"
@@ -27,12 +27,28 @@ const NavBar = () => {
   let [storeOpen, setStoreOpen] = useState(false);
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
-  const shopStatus = () => {
+
+  useEffect(() => {
     API.getVendor(user.sub)
       .then(vendor => {
-        const openShop = () => { setStoreOpen(storeOpen = true) }
-        const closeShop = () => { setStoreOpen(storeOpen = false) }
-        vendor.data[0].status === false ? openShop() : closeShop();
+        setStoreOpen(storeOpen = vendor.data[0].status);
+      })
+      .catch(err => console.log(err));
+  });
+
+  const shopStatus = (prop) => {
+    console.log("I have received ", prop);
+    API.getVendor(user.sub)
+      .then(vendor => {
+        setStoreOpen(storeOpen = !storeOpen);
+
+        const newLocation = {
+          id: vendor.data[0]._id, location: { location: prop }
+        };
+        API.setVendorLocation(newLocation)
+          .then(completed => { })
+          .catch(err => console.log("Location Err:", err));
+
         const newStatus = { id: vendor.data[0]._id, status: storeOpen }
         API.updateStatus(newStatus)
           .then(updated => { })
@@ -54,9 +70,9 @@ const NavBar = () => {
     <div className="nav-container">
       <Navbar style={{ backgroundColor: '#fc0' }} light expand="md">
         <Container>
-          <NavLink 
-          tag={RouterNavLink}
-          to="/"
+          <NavLink
+            tag={RouterNavLink}
+            to="/"
           >
             <img height='50px' width='60px' style={{ marginRight: '10px' }} src={logo} alt="Mheels logo"></img>
           </NavLink>
@@ -106,7 +122,7 @@ const NavBar = () => {
                     >{storeOpen && (
                       <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Close Up</VendorGeo>)}
                       {!storeOpen && (
-                      <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Go Live</VendorGeo>)}
+                        <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Go Live</VendorGeo>)}
                     </DropdownItem>
 
                     <DropdownItem
