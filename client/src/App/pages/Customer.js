@@ -10,7 +10,7 @@ const Customer = () => {
   const [active, setActive] = useState({ state: false });
   const [menu, setMenu] = useState({ id: 0 });
   const changeState = bool => setActive({ state: bool });
-  const updateMenu = menuId => setMenu({ id: menuId });
+  const updateMenu = menuId => { console.log("Hitme"); setMenu({ id: menuId }) };
   return (
     <Container className="mb-3">
       <Row>
