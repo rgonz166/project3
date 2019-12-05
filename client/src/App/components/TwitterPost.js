@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import {Button,Form,FormGroup,Input,Row,Col,Container,Card,CardBody,CardHeader} from "reactstrap"
+import Switch from "react-input-switch";
 import API from "../utils/API";
 
 class TwitterPost extends Component {
@@ -107,6 +108,7 @@ class TwitterPost extends Component {
 													{this.state.tweetCharsLeft}
 												</span>
 											</p>
+                      <Switch />
 										</FormGroup>
 									</Form>
 									<Button color="success" onClick={this.submit}>
