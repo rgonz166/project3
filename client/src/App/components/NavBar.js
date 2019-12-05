@@ -29,11 +29,14 @@ const NavBar = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   useEffect(() => {
-    API.getVendor(user.sub)
-      .then(vendor => {
-        setStoreOpen(storeOpen = vendor.data[0].status);
-      })
-      .catch(err => console.log(err));
+    const grabStatus = () => {
+      API.getVendor(user.sub)
+        .then(vendor => {
+          setStoreOpen(storeOpen = vendor.data[0].status);
+        })
+        .catch(err => console.log(err));
+    };
+    isAuthenticated ? grabStatus() : console.log("");
   });
 
   const shopStatus = (prop) => {
