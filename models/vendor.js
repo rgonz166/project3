@@ -7,8 +7,9 @@ const vendorSchema = new Schema({
   ownerId: { type: String, required: true },
   menu: { type: Schema.Types.ObjectId, ref: "Menu" },
   categories: Array,
+  customTweet: {type: String, default: ''},
+  location: String,
   hashtags: Array,
-  location: Array,
   city: String,
   state: String,
   status: { type: Boolean, required: true, default: false }, //False = closed ; True = open
