@@ -14,7 +14,7 @@ class TwitterPost extends Component {
       maxChars: 280,
       tweetChars: 0,
       tweetCharsLeft:280,
-      toggleValue: 1,
+      toggleValue: 0,
     }
   }
 
@@ -123,7 +123,7 @@ class TwitterPost extends Component {
                         color: '#858585',
                         fontSize: '14px'
                       }}>
-                        {this.state.toggleValue ? "This is true" : "This is false"}
+                        {this.state.toggleValue ? "Text will be saved as default tweet." : "Click here to save as your default tweet."}
                       </span>
 										</FormGroup>
 									</Form>
