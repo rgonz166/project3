@@ -13,7 +13,8 @@ class TwitterPost extends Component {
       tweetBody: '',
       maxChars: 280,
       tweetChars: 0,
-      tweetCharsLeft:280
+      tweetCharsLeft:280,
+      toggleValue: false,
     }
   }
 
@@ -41,6 +42,10 @@ class TwitterPost extends Component {
     this.setState({
       tweetCharsLeft: this.state.maxChars - this.state.tweetBody.length,
     });
+  }
+
+  handleToggle = () => {
+    console.log("toggled");
   }
 
   sendTweet = () => {
@@ -108,7 +113,7 @@ class TwitterPost extends Component {
 													{this.state.tweetCharsLeft}
 												</span>
 											</p>
-                      <Switch />
+                      <Switch value={this.state.toggleValue} onChange={this.handleToggle}/>
 										</FormGroup>
 									</Form>
 									<Button color="success" onClick={this.submit}>
