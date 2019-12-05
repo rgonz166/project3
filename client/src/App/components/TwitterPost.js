@@ -117,7 +117,12 @@ class TwitterPost extends Component {
 													{this.state.tweetCharsLeft}
 												</span>
 											</p>
-                      <Switch style={{marginTop: '7px'}} value={this.state.toggleValue} onChange={this.handleToggle}/>
+                      <Switch style={{
+                        marginTop: '7px'
+                        }} 
+                        value={this.state.toggleValue} 
+                        onChange={this.handleToggle}
+                      />
                       <span style={{
                         marginLeft: '5px',
                         color: '#858585',
