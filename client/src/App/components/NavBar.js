@@ -9,7 +9,6 @@ import {
   Container,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -52,7 +51,7 @@ const NavBar = () => {
   }
 
   const CompanyLogo = () => {
-    return <img src="../assets/tortaLogo_transparent.png"></img>
+    return <img src="../assets/tortaLogo_transparent.png" alt="Mheels logo"></img>
   }
 
   const logoutWithRedirect = () =>
@@ -64,37 +63,18 @@ const NavBar = () => {
     <div className="nav-container">
       <Navbar style={{ backgroundColor: '#fc0' }} light expand="md">
         <Container>
-          <img height='50px' width='60px' style={{ marginRight: '10px' }} src={logo}></img>
+          <NavLink 
+          tag={RouterNavLink}
+          to="/"
+          >
+            <img height='50px' width='60px' style={{ marginRight: '10px' }} src={logo} alt="Mheels logo"></img>
+          </NavLink>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
-              <NavItem>
-                <NavLink
-                  tag={RouterNavLink}
-                  to="/"
-                  exact
-                  activeClassName="router-link-exact-active"
-                >
-                  Home
-                </NavLink>
-              </NavItem>
             </Nav>
-
             {/* Actually display on the screen */}
             <Nav className="d-none d-md-block" navbar>
-              {/* If the user is NOT logged in, display login button */}
-              {!isAuthenticated && (
-                <NavItem>
-                  <Button
-                    id="qsLoginBtn"
-                    color="success"
-                    className="btn-margin"
-                    onClick={() => loginWithRedirect({})}
-                  >
-                    Log in
-                  </Button>
-                </NavItem>
-              )}
               {/* if the user IS logged in, display the circle drop down menu */}
               {isAuthenticated && (
                 <UncontrolledDropdown nav inNavbar>
@@ -156,8 +136,6 @@ const NavBar = () => {
                 </UncontrolledDropdown>
               )}
             </Nav>
-
-
             {/* if the user is NOT logged in */}
             {!isAuthenticated && (
               <Nav className="d-md-none" navbar>
