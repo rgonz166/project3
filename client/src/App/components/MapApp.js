@@ -33,7 +33,7 @@ export class MapContainer extends Component {
 
   grabVendors() {
     API.getVendors()
-      .then(reply => { this.setState({ vendors: reply.data }); })
+      .then(reply => { this.setState({ vendors: reply.data.filter(vendor => vendor.status) }); })
       .catch(err => { console.log(err); return { err } });
   };
 
@@ -75,10 +75,10 @@ export class MapContainer extends Component {
         {/* Start looping thru vendors if exists */}
         {this.state.vendors && (
           this.state.vendors.map(vendor => (
-            <Marker onClick={this.onMarkerClick} name={vendor.storeName} menu={vendor.menu} position={{ lat: vendor.location[0], lng: vendor.location[1] }} />
+             <Marker onClick={this.onMarkerClick} name={vendor.storeName} menu={vendor.menu} position={{ lat: vendor.location[0], lng: vendor.location[1] }} />
           ))
         )}
-        {/* <Marker onClick={this.onMarkerClick} name={"my location"} icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"} />
+        {/* 
         <Marker onClick={this.onMarkerClick} name={product.Name}
           position={{ lat: 32.715736, lng: -117.161087 }} />
         <Marker onClick={this.onMarkerClick} name={'here'}

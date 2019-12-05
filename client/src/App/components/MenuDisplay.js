@@ -64,7 +64,10 @@ class MenuDisplay extends Component {
                 </strong>
                 <span className="price text-right" style={{ float: 'right' }}>
                   ${item.price}
-                </span>
+                </span><br />
+                <p>
+                  {item.description}
+                </p>
 
               </ListGroupItem>
             ))}
