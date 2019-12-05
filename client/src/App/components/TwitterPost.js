@@ -14,7 +14,7 @@ class TwitterPost extends Component {
       maxChars: 280,
       tweetChars: 0,
       tweetCharsLeft:280,
-      toggleValue: false,
+      toggleValue: 1,
     }
   }
 
@@ -45,7 +45,11 @@ class TwitterPost extends Component {
   }
 
   handleToggle = () => {
-    console.log("toggled");
+    console.log("targeted");
+    let tempVal = this.state.toggleValue ? 0 : 1;
+    this.setState({
+      toggleValue: tempVal
+    })
   }
 
   sendTweet = () => {
