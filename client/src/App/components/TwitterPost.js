@@ -128,7 +128,7 @@ class TwitterPost extends Component {
                         color: '#858585',
                         fontSize: '14px'
                       }}>
-                        {this.state.toggleValue ? "Text will be saved as default tweet." : "Click here to save as your default tweet."}
+                        {this.state.toggleValue ? "Will save as default tweet." : "Click to save as default tweet."}
                       </span>
 										</FormGroup>
 									</Form>
