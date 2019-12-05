@@ -70,6 +70,7 @@ class BusinessInfo extends Component {
                     storeName: this.state.storeName,
                     owner: this.state.owner,
                     ownerId: this.state.auth0,
+                    location: [0,0],
                     status: false,
                     categories: [this.state.categories],
                     city: this.state.city ? this.state.city : '',
