@@ -61,6 +61,14 @@ export default {
     console.log(body);
     return axios.put("/api/vendor/" + object.id, body);
   },
+  updateStatus: function (object) {
+    console.log(object.status);
+    console.log(typeof(object.status));
+    const status = {
+      status: object.status
+    }
+    return axios.put("/api/vendor/" + object.id, status);
+  },
   // send tweet
   sendTweet: function(obj) {
     return axios.post("/api/twitter", {body: obj});

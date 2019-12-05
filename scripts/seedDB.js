@@ -18,6 +18,7 @@ const vendorSeed = [
     menu: Thing("000000000000000000000001"),
     categories: ["Tacos", "Mexican", "TJ"],
     hashtags: ["#lostacos","#tacos"],
+    status: false,
     closingTime: "8pm"
   },
   {
@@ -27,6 +28,7 @@ const vendorSeed = [
     ownerId: "google-oauth2|108652893752770055277",
     categories: ["Tacos", "Fancy"],
     hashtags: ["#tacotuesday","#tacos"],
+    status: false,
     closingTime: "6pm"
   },
   {
@@ -35,6 +37,7 @@ const vendorSeed = [
     menu: Thing("000000000000000000000003"),
     ownerId: "google-oauth2|105235722484386154166",
     categories: ["Tacos", "Chicano", "TJ"],
+    status: false,
     closingTime: "8pm"
   },
   {
@@ -44,6 +47,7 @@ const vendorSeed = [
     ownerId: "google-oauth2|105492094761663677396",
     categories: ["Tacos", "Mexican", "TJ", "Cheap"],
     hashtags: ["#lostacos","#tacos", "#tjtacos"],
+    status: false,
     closingTime: "1am"
   }
 ];
