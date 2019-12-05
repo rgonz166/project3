@@ -146,21 +146,6 @@ const NavBar = () => {
                 </UncontrolledDropdown>
               )}
             </Nav>
-            {/* if the user is NOT logged in */}
-            {!isAuthenticated && (
-              <Nav className="d-md-none" navbar>
-                <NavItem>
-                  <Button
-                    id="qsLoginBtn"
-                    color="primary"
-                    block
-                    onClick={() => loginWithRedirect({})}
-                  >
-                    Log in
-                  </Button>
-                </NavItem>
-              </Nav>
-            )}
             {/* This is the Link to Route */}
             {isAuthenticated && (
               <Nav
