@@ -32,15 +32,12 @@ const NavBar = () => {
   useEffect(() => {
     API.getVendor(user.sub)
       .then(vendor => {
-        console.log("b",storeOpen);
         setStoreOpen(storeOpen = vendor.data[0].status);
-        console.log("a",storeOpen);
       })
       .catch(err => console.log(err));
   });
 
   const shopStatus = () => {
-    console.log("Shop WAS", storeOpen);
     API.getVendor(user.sub)
       .then(vendor => {
         const openShop = () => { setStoreOpen(storeOpen = true) }
@@ -48,7 +45,7 @@ const NavBar = () => {
         vendor.data[0].status === false ? openShop() : closeShop();
         const newStatus = { id: vendor.data[0]._id, status: storeOpen }
         API.updateStatus(newStatus)
-          .then(updated => { console.log("Shop IS ", storeOpen) })
+          .then(updated => {})
           .catch(err => console.log("Updated Err:", err));
       })
       .catch(err => console.log(err));
