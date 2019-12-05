@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import VendorGeo from "./VendorLocation"
@@ -28,7 +28,19 @@ const NavBar = () => {
   let [storeOpen, setStoreOpen] = useState(false);
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
+
+  useEffect(() => {
+    API.getVendor(user.sub)
+      .then(vendor => {
+        console.log("b",storeOpen);
+        setStoreOpen(storeOpen = vendor.data[0].status);
+        console.log("a",storeOpen);
+      })
+      .catch(err => console.log(err));
+  });
+
   const shopStatus = () => {
+    console.log("Shop WAS", storeOpen);
     API.getVendor(user.sub)
       .then(vendor => {
         const openShop = () => { setStoreOpen(storeOpen = true) }
@@ -36,7 +48,7 @@ const NavBar = () => {
         vendor.data[0].status === false ? openShop() : closeShop();
         const newStatus = { id: vendor.data[0]._id, status: storeOpen }
         API.updateStatus(newStatus)
-          .then(updated => { })
+          .then(updated => { console.log("Shop IS ", storeOpen) })
           .catch(err => console.log("Updated Err:", err));
       })
       .catch(err => console.log(err));
@@ -126,7 +138,7 @@ const NavBar = () => {
                     >{storeOpen && (
                       <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Close Up</VendorGeo>)}
                       {!storeOpen && (
-                      <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Go Live</VendorGeo>)}
+                        <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Go Live</VendorGeo>)}
                     </DropdownItem>
 
                     <DropdownItem
