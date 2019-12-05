@@ -9,6 +9,7 @@ class TwitterPost extends Component {
     super(props);
     this.state = {
       auth0: this.props.user,
+      id: '',
       owner: '',
       tweetBody: '',
       maxChars: 280,
@@ -27,10 +28,12 @@ class TwitterPost extends Component {
   }
 
   setUserSettings = (id) => {
+    console.log(id);
     API.getVendor(id)
       .then(res => {
         var data = res.data[0];
         this.setState({
+          id: data._id,
           owner: data.owner,
           tweetBody: data.customTweet
         });
@@ -61,10 +64,14 @@ class TwitterPost extends Component {
 
   updateCustomTweet = () => {
     let tweet = {
-      id: this.state.auth0,
+      id: this.state.id,
       message: this.state.tweetBody
     }
-    // add custom tweet api call
+    API.updateCustomTweet(tweet)
+      .then(result => {
+        console.log("saving result", result);
+      })
+      .catch(err => console.log(err));
   }
 
   // Note: add custom user tweet body from db in did mount
@@ -75,7 +82,13 @@ class TwitterPost extends Component {
 
   submit = (e) => {
     e.preventDefault();
-    this.sendTweet();
+    if(this.state.toggleValue){
+      this.updateCustomTweet();
+      this.sendTweet();
+    }
+    else{
+      this.sendTweet()
+    }
   }
 
   render() {
