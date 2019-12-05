@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Searchbar from '../components/Searchbar/Searchbar';
+import Searchbar from '../components/Searchbar';
 import GoogleApiWrapper from '../components/MapApp';
 import { Container, Row, Col } from 'reactstrap';
 

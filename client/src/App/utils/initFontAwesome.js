@@ -1,7 +1,8 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faServer, faUtensils, faLink, faPowerOff, faUser, faComment } from "@fortawesome/free-solid-svg-icons";
+import { faServer, faUtensils, faMapMarkerAlt, faLink, faPowerOff, faUser, faComment } from "@fortawesome/free-solid-svg-icons";
 
 function initFontAwesome() {
+  library.add(faMapMarkerAlt);
   library.add(faServer);
   library.add(faLink);
   library.add(faUser);

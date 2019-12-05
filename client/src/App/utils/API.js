@@ -15,7 +15,8 @@ export default {
   // Accepts Object with two keys (id and location) with id refering to vendor and location being Long+Lat in string csv notation(?)
   setVendorLocation: function (obj) {
     const { id, location } = obj;
-    return axios.put("/api/vendor/" + id, { obj: location });
+    console.log(location);
+    return axios.put("/api/vendor/" + id, location);
   },
   // Gets every vendor
   getVendors: function () {
@@ -67,6 +68,12 @@ export default {
       customTweet: object.message
     }
     return axios.put("/api/vendor/" + object.id, tweet)
+  },
+  updateStatus: function (object) {
+    const status = {
+      status: object.status
+    }
+    return axios.put("/api/vendor/" + object.id, status);
   },
   // send tweet
   sendTweet: function(obj) {

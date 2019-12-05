@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import VendorGeo from "./VendorLocation"
+import API from "../utils/API";
 
 import {
   Collapse,
   Container,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -23,12 +24,44 @@ import { useAuth0 } from "../../react-auth0-spa";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  let [storeOpen, setStoreOpen] = useState(false);
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
 
+  useEffect(() => {
+    const grabStatus = () => {
+      API.getVendor(user.sub)
+        .then(vendor => {
+          setStoreOpen(storeOpen = vendor.data[0].status);
+        })
+        .catch(err => console.log(err));
+    };
+    isAuthenticated ? grabStatus() : console.log("");
+  });
+
+  const shopStatus = (prop) => {
+    console.log("I have received ", prop);
+    API.getVendor(user.sub)
+      .then(vendor => {
+        setStoreOpen(storeOpen = !storeOpen);
+
+        const newLocation = {
+          id: vendor.data[0]._id, location: { location: prop }
+        };
+        API.setVendorLocation(newLocation)
+          .then(completed => { })
+          .catch(err => console.log("Location Err:", err));
+
+        const newStatus = { id: vendor.data[0]._id, status: storeOpen }
+        API.updateStatus(newStatus)
+          .then(updated => { })
+          .catch(err => console.log("Updated Err:", err));
+      })
+      .catch(err => console.log(err));
+  }
 
   const CompanyLogo = () => {
-    return <img src="../assets/tortaLogo_transparent.png"></img>
+    return <img src="../assets/tortaLogo_transparent.png" alt="Mheels logo"></img>
   }
 
   const logoutWithRedirect = () =>
@@ -40,36 +73,19 @@ const NavBar = () => {
     <div className="nav-container">
       <Navbar style={{ backgroundColor: '#fc0' }} light expand="md">
         <Container>
-          <img height='50px' width='60px' style={{ marginRight: '10px' }} src={logo}></img>
+          <NavLink
+            tag={RouterNavLink}
+            to="/"
+          >
+            <img height='50px' width='60px' style={{ marginRight: '10px' }} src={logo} alt="Mheels logo"></img>
+          </NavLink>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
-              <NavItem>
-                <NavLink
-                  tag={RouterNavLink}
-                  to="/"
-                  exact
-                  activeClassName="router-link-exact-active"
-                >
-                  Home
-                </NavLink>
-              </NavItem>
             </Nav>
-
             {/* Actually display on the screen */}
             <Nav className="d-none d-md-block" navbar>
-              {!isAuthenticated && (
-                <NavItem>
-                  <Button
-                    id="qsLoginBtn"
-                    color="success"
-                    className="btn-margin"
-                    onClick={() => loginWithRedirect({})}
-                  >
-                    Log in
-                  </Button>
-                </NavItem>
-              )}
+              {/* if the user IS logged in, display the circle drop down menu */}
               {isAuthenticated && (
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret id="profileDropDown">
@@ -105,6 +121,14 @@ const NavBar = () => {
                       <FontAwesomeIcon icon="comment" className="mr-3" /> Social Media
                     </DropdownItem>
                     <DropdownItem
+                      className="dropdown-profile"
+                    >{storeOpen && (
+                      <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Close Up</VendorGeo>)}
+                      {!storeOpen && (
+                        <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Go Live</VendorGeo>)}
+                    </DropdownItem>
+
+                    <DropdownItem
                       tag={RouterNavLink}
                       to="/menu"
                       className="dropdown-profile"
@@ -122,6 +146,7 @@ const NavBar = () => {
                 </UncontrolledDropdown>
               )}
             </Nav>
+            {/* if the user is NOT logged in */}
             {!isAuthenticated && (
               <Nav className="d-md-none" navbar>
                 <NavItem>
@@ -179,6 +204,10 @@ const NavBar = () => {
                     Social Media
                   </RouterNavLink>
                 </NavItem>
+                <NavItem>
+                  <VendorGeo><FontAwesomeIcon icon="comment" className="mr-3" /></VendorGeo>
+                </NavItem>
+
                 <NavItem>
                   <FontAwesomeIcon icon="utensils" className="mr-3" />
                   <RouterNavLink
