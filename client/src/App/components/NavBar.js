@@ -189,8 +189,12 @@ const NavBar = () => {
                     Social Media
                   </RouterNavLink>
                 </NavItem>
+
                 <NavItem>
-                  <VendorGeo><FontAwesomeIcon icon="comment" className="mr-3" /></VendorGeo>
+                  {storeOpen && (
+                    <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Close Up</VendorGeo>)}
+                  {!storeOpen && (
+                    <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Go Live</VendorGeo>)}
                 </NavItem>
 
                 <NavItem>
