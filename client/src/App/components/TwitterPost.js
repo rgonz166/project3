@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import {Button,Form,FormGroup,Input,Row,Col,Container,Card,CardBody,CardHeader} from "reactstrap"
-import Toggle from 'react-toggle';
 import API from "../utils/API";
 
 class TwitterPost extends Component {
@@ -77,47 +76,55 @@ class TwitterPost extends Component {
 
   render() {
     return (
-      <div className="twitter-post">
-        <Container className="mb-3">
-          <Row>
-            <Col sm="12">
-              <Card>
-                <CardHeader >
-                  <strong>Twitter Posting</strong>
-                </CardHeader>
-                <CardBody>
-                  <Form>
-                    <FormGroup>
-                      <Input 
-                      type="textarea"
-                      name="twitter-body"
-                      id="twitter-body"
-                      value={this.state.tweetBody}
-                      onChange={this.onChange}
-                      placeholder="Insert tweet"
-                      />
-                      <p style={{
-                        textAlign:"right",
-                        color: "#999",
-                        fontSize: "12px"
-                        }}
-                      >
-                        Characters Left: <span style={(this.state.tweetCharsLeft < 0)?{color:"red"}:{}}>{this.state.tweetCharsLeft}</span>
-                      </p>
-                      <label className="switch">
-                        <input type="checkbox" />
-                          <span className="slider round"></span>
-                      </label>
-                    </FormGroup>
-                  </Form>
-                  <Button color="success" onClick={this.submit}>Submit</Button>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    )
+			<div className="twitter-post">
+				<Container className="mb-3">
+					<Row>
+						<Col sm="12">
+							<Card>
+								<CardHeader>
+									<strong>Twitter Posting</strong>
+								</CardHeader>
+								<CardBody>
+									<Form>
+										<FormGroup>
+											<Input
+												type="textarea"
+												name="twitter-body"
+												id="twitter-body"
+												value={this.state.tweetBody}
+												onChange={this.onChange}
+												placeholder="Insert tweet"
+											/>
+											<p
+												style={{
+													textAlign: "right",
+													color: "#999",
+													fontSize: "12px"
+												}}
+											>
+												Characters Left:{" "}
+												<span
+													style={
+														this.state.tweetCharsLeft < 0
+															? { color: "red" }
+															: {}
+													}
+												>
+													{this.state.tweetCharsLeft}
+												</span>
+											</p>
+										</FormGroup>
+									</Form>
+									<Button color="success" onClick={this.submit}>
+										Submit
+									</Button>
+								</CardBody>
+							</Card>
+						</Col>
+					</Row>
+				</Container>
+			</div>
+		)
   }
 }
 
