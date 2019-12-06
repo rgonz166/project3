@@ -1,43 +1,45 @@
 import React, { Component } from 'react';
-import { Button, Form, Input, Row, Col, Container,InputGroup, InputGroupAddon,} from 'reactstrap';
+import { Button, Form, Input, Row, Col, Container, InputGroup, InputGroupAddon, } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch  } from '@fortawesome/free-solid-svg-icons'; 
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Category from '../Category';
 import "./searchbar.css";
-import {categoryFilter} from '../MapApp';
+import { categoryFilter } from '../MapApp';
 
 export default class AutoComplete extends Component {
-    constructor (props){
-        super (props);  
-        this.state={
+    constructor(props) {
+        super(props);
+        this.state = {
+            func: props.search,
             suggestions: [],
             text: "",
             items: [],
-        };     
+        };
     }
-    
+
     onTextChanged = (e) => {
         const items = this.state.items;
         const value = e.target.value;
         let suggestions = [];
-        if(value.length > 0){
-            const matchlen = new RegExp (`^${value}`, 'i');
+        if (value.length > 0) {
+            const matchlen = new RegExp(`^${value}`, 'i');
             suggestions = items.sort().filter(v => matchlen.test(v));
         }
         this.setState(() => ({ suggestions, text: value }));
-        
+
     }
-    handleClick= (event) => {//this grabs the customer search
+    handleClick = (event) => {//this grabs the customer search
         var cat = this.state.text;
         console.log(cat);
+        this.state.func(cat);
         categoryFilter(cat);
-      }
-
-    componentDidMount() {
-        this.setState({items : Category});
     }
 
-    suggestionSelected (value) {
+    componentDidMount() {
+        this.setState({ items: Category });
+    }
+
+    suggestionSelected(value) {
         this.setState(() => ({
             text: value,
             suggestions: [],
@@ -45,12 +47,12 @@ export default class AutoComplete extends Component {
 
     }
 
-    renderSuggestions () {
+    renderSuggestions() {
         const { suggestions } = this.state;
-        if(suggestions.length === 0){
+        if (suggestions.length === 0) {
             return null;
-        } 
-        return(
+        }
+        return (
             <ul>
                 {suggestions.map((item) => <li onClick={() => this.suggestionSelected(item)}>{item}</li>)}
             </ul>
@@ -60,22 +62,22 @@ export default class AutoComplete extends Component {
     render() {
         const { text } = this.state;
         return (
-           <Container className="autoComplete mb-3">
+            <Container className="autoComplete mb-3">
                 <Row>
                     <Col md={12} >
                         <Form>
                             <InputGroup>
                                 <Input value={text} onChange={this.onTextChanged} />
                                 <InputGroupAddon addonType="append">
-                                    <Button onClick = {this.handleClick} color="warning"><FontAwesomeIcon  icon={faSearch}/></Button>
-                                </InputGroupAddon>     
+                                    <Button onClick={this.handleClick} color="warning"><FontAwesomeIcon icon={faSearch} /></Button>
+                                </InputGroupAddon>
                             </InputGroup>
-                                <ul>
-                                    {this.renderSuggestions()}
-                                </ul>
+                            <ul>
+                                {this.renderSuggestions()}
+                            </ul>
                         </Form>
                     </Col>
-                </Row>       
+                </Row>
             </Container>
         )
     }
