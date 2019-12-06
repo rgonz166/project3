@@ -9,15 +9,15 @@ import { products } from './places';
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import CurrentLocation from './Maps';
 import API from '../utils/API';
-const mapStyles = {
-  width: '100%',
-  height: '100%'
+const query = {
+  term: ""
 };
 
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      term: props.update,
       funcMenu: props.menu,
       funcActive: props.active,
       vendors: null,
@@ -30,6 +30,10 @@ export class MapContainer extends Component {
   componentDidMount() {
     this.grabVendors();
   };
+
+  componentDidUpdate() {
+    console.log("Query:", query);
+  }
 
   grabVendors() {
     API.getVendors()
@@ -73,9 +77,14 @@ export class MapContainer extends Component {
         google={this.props.google}
       >
         {/* Start looping thru vendors if exists */}
-        {this.state.vendors && (
-          this.state.vendors.map(vendor => (
-             <Marker onClick={this.onMarkerClick} name={vendor.storeName} menu={vendor.menu} position={{ lat: vendor.location[0], lng: vendor.location[1] }} />
+        <Marker name={"my location"} icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}/>
+        {this.state.vendors && (query.term ?
+          this.state.vendors.filter(vendor =>
+            vendor.categories.indexOf(query.term) != -1
+          ).map(vendor => (
+            <Marker onClick={this.onMarkerClick} name={<div>{vendor.storeName}<br></br><a href={`https://maps.google.com/?q=${vendor.location[0]},${vendor.location[1]}`} target="_blank">Directions</a></div>} menu={vendor.menu} position={{ lat: vendor.location[0], lng: vendor.location[1] }} />
+          )) : this.state.vendors.map(vendor => (
+            <Marker onClick={this.onMarkerClick} name={<div>{vendor.storeName}<br></br><a href={`https://maps.google.com/?q=${vendor.location[0]},${vendor.location[1]}`} target="_blank">Directions</a></div>} menu={vendor.menu} position={{ lat: vendor.location[0], lng: vendor.location[1] }} />
           ))
         )}
         {/* 
@@ -105,9 +114,7 @@ export default GoogleApiWrapper({
 })(MapContainer);
 
 export const categoryFilter = (e) => {
-
-
-
+  query.term = e;
   console.log(e + " here");
   //this.filterCategory(e);//figure out how to pass this to the function
 }
