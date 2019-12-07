@@ -67,7 +67,7 @@ export default class AutoComplete extends Component {
                     <Col md={12} >
                         <Form>
                             <InputGroup>
-                                <Input value={text} onChange={this.onTextChanged} />
+                                <Input value={text} onChange={this.onTextChanged} bsSize="lg" />
                                 <InputGroupAddon addonType="append">
                                     <Button onClick={this.handleClick} color="warning"><FontAwesomeIcon icon={faSearch} /></Button>
                                 </InputGroupAddon>
