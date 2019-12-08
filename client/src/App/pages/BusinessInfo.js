@@ -17,30 +17,29 @@ class BusinessInfo extends Component {
             items: [],
             status: 0,
             vendor: [],
-           isupdate: false
+            isupdate: false
         }
     }
 
     componentDidMount() {
-        this.setState({ items: Category })
-        
-        if(this.props.vendorId){
-            this.setState({isupdate: true});
+        this.setState({ items: Category });
+        if (this.props.vendorId) {
+            this.setState({ isupdate: true });
             API.getVendor(this.props.vendorId)
-            .then(result => {
-                console.log(result)
-                if(result.data && result.data.length){
-                  const vendorInfo = result.data[0] != null ? result.data[0] : null;
-                  
-                  this.setState({vendor : vendorInfo});
-                  this.setState({owner: this.state.vendor.owner});
-                  this.setState({storeName: this.state.vendor.storeName});
-                  this.setState({categories: this.state.vendor.categories});
-                  this.setState({city: this.state.vendor.city});
-                  this.setState({state: this.state.vendor.state});
-                  this.setState({menu: this.state.vendor.menu});
-                } 
-            })
+                .then(result => {
+                    console.log(result)
+                    if (result.data && result.data.length) {
+                        const vendorInfo = result.data[0] != null ? result.data[0] : null;
+
+                        this.setState({ vendor: vendorInfo });
+                        this.setState({ owner: this.state.vendor.owner });
+                        this.setState({ storeName: this.state.vendor.storeName });
+                        this.setState({ categories: this.state.vendor.categories });
+                        this.setState({ city: this.state.vendor.city });
+                        this.setState({ state: this.state.vendor.state });
+                        this.setState({ menu: this.state.vendor.menu });
+                    }
+                })
         }
     }
 
@@ -52,12 +51,12 @@ class BusinessInfo extends Component {
     };
 
     handleFormSubmit = e => {
-       if(this.state.isupdate){
-           this.updateVendor(e);
-       } else {
-           this.createVendor(e);
-       }
-       
+        if (this.state.isupdate) {
+            this.updateVendor(e);
+        } else {
+            this.createVendor(e);
+        }
+
     }
 
     createVendor = () => {
@@ -70,7 +69,7 @@ class BusinessInfo extends Component {
                     storeName: this.state.storeName,
                     owner: this.state.owner,
                     ownerId: this.state.auth0,
-                    location: [0,0],
+                    location: [0, 0],
                     status: false,
                     categories: [this.state.categories],
                     city: this.state.city ? this.state.city : '',
@@ -88,6 +87,7 @@ class BusinessInfo extends Component {
 
     updateVendor = e => {
         e.preventDefault();
+        this.props.toggler();
         let updatedVendor = {
             id: this.state.vendor._id,
             storeName: this.state.storeName,
@@ -100,8 +100,7 @@ class BusinessInfo extends Component {
         }
         API.updateVendor(updatedVendor)
             .then(reply => {
-                
-                this.setState({ status: 2 });
+                this.setState({ status: 0 });
                 this.props.setIsUpdated(false);
             }).catch(err => console.log("Vendor err: ", err));
     }
@@ -189,7 +188,8 @@ class BusinessInfo extends Component {
             case 1:
                 return <Redirect to='/menu' />
             case 2:
-                return <Redirect to='/profile' />
+                return (<div>
+                <Redirect to='/profile' /></div>)
         }
     }
 }

@@ -78,5 +78,8 @@ export default {
   // send tweet
   sendTweet: function(obj) {
     return axios.post("/api/twitter", {body: obj});
+  },
+  getTweet: function(id){
+    return axios.get("/api/twitter/"+id);
   }
 };
