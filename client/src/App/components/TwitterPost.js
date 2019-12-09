@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-import { Button, Form, FormGroup, Input, Row, Col, Container, Card, CardBody, CardHeader } from "reactstrap"
+import { Button, Form, FormGroup, Input, Row, Col, Container, Card, CardBody, CardHeader } from "reactstrap";
+import TweetEmbed from 'react-tweet-embed';
 import Switch from "react-input-switch";
 import API from "../utils/API";
 
@@ -171,8 +172,9 @@ class TwitterPost extends Component {
 									</Button>
                 </CardBody>
               </Card>
+              
               {this.state.tweetArray.map(tweet => (
-                <p key={tweet._id}>{tweet.body}</p>
+                <TweetEmbed id={tweet.tweetId} />
               ))}
             </Col>
           </Row>
