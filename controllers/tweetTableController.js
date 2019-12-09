@@ -1,40 +1,40 @@
 const db = require("../models");
 
-// Defining methods for the vendorController
+// Defining methods for the menuController
 module.exports = {
   findAll: function (req, res) {
-    db.Vendor
+    db.TweetTable
       .find(req.query)
       .sort({ storeName: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: function (req, res) {
-    db.Vendor
-      .find({ ownerId: req.params.id })
+    db.TweetTable
+      .findById(req.params.id)
       .populate({
-        path: 'tweetTable',
-        populate: {
-          path: 'tweet'
-        }
+        path: 'tweet'
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
-    db.Vendor
+    console.log(req.body);
+    db.TweetTable
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   update: function (req, res) {
-    db.Vendor
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+    console.log("Attempting to update");
+    console.log(req.params.id, req.body);
+    db.TweetTable
+      .findOneAndUpdate({ _id: req.params.id }, { $push: { tweet: req.body.string } }, { new: true })
       .then(dbModel => res.json(dbModel))
-      .catch(err => console.log(err));
+      .catch(err => { console.log(err); res.status(422).json(err) });
   },
   remove: function (req, res) {
-    db.Vendor
+    db.TweetTable
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))

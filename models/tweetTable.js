@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const menuSchema = new Schema({
+const tableSchema = new Schema({
   tweet: [{ type: Schema.Types.ObjectId, ref: "Tweet" }]
 });
 
-const TweetTable = mongoose.model("TweetTable", menuSchema);
+const TweetTable = mongoose.model("TweetTable", tableSchema);
 
 module.exports = TweetTable;

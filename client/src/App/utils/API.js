@@ -43,6 +43,9 @@ export default {
   createMenu: function (obj) {
     return axios.post("/api/menu/", obj);
   },
+  createTweetTable: function (obj) {
+    return axios.post("/api/tweetTable/", obj)
+  },
   createVendor: function (obj) {
     console.log(`Menu is ${obj['menu']} and type of ${typeof (obj['menu'])}`);
     obj['menu'] = ObjId(obj['menu']);
@@ -63,7 +66,7 @@ export default {
     return axios.put("/api/vendor/" + object.id, body);
   },
   // Update vendor custom tweet
-  updateCustomTweet: function(object) {
+  updateCustomTweet: function (object) {
     let tweet = {
       customTweet: object.message
     }
@@ -76,10 +79,13 @@ export default {
     return axios.put("/api/vendor/" + object.id, status);
   },
   // send tweet
-  sendTweet: function(obj) {
-    return axios.post("/api/twitter", {body: obj});
+  sendTweet: function (obj) {
+    return axios.post("/api/twitter", { body: obj });
   },
-  getTweet: function(id){
-    return axios.get("/api/twitter/"+id);
+  saveTweet: function (tweetObj) {
+    return axios.post("/api/tweetTable/" + tweetObj.id, { string: tweetObj.tweetMongoId });
+  },
+  getTweet: function (id) {
+    return axios.get("/api/twitter/" + id);
   }
 };

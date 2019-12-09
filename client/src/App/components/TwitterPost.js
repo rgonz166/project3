@@ -12,6 +12,8 @@ class TwitterPost extends Component {
       id: '',
       owner: '',
       tweetBody: '',
+      tweetTable: '',
+      tweetArray: [],
       maxChars: 280,
       tweetChars: 0,
       tweetCharsLeft: 280,
@@ -35,7 +37,9 @@ class TwitterPost extends Component {
         this.setState({
           id: data._id,
           owner: data.owner,
-          tweetBody: data.customTweet
+          tweetBody: data.customTweet,
+          tweetTable: data.tweetTable._id,
+          tweetArray: data.tweetTable.tweet
         });
         this.updateCharsLeft();
       })
@@ -58,6 +62,16 @@ class TwitterPost extends Component {
     API.sendTweet(this.state.tweetBody)
       .then(result => {
         console.log("Sending Tweet", result);
+        const tweetObj = {
+          id: this.state.tweetTable,
+          tweetMongoId: result.data._id
+        }
+        API.saveTweet(tweetObj)
+          .then(reply => {
+            console.log("New Insertion To Table ", reply);
+            this.setUserSettings(this.state.auth0);
+          })
+          .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
   }
@@ -157,6 +171,9 @@ class TwitterPost extends Component {
 									</Button>
                 </CardBody>
               </Card>
+              {this.state.tweetArray.map(tweet => (
+                <p key={tweet._id}>{tweet.body}</p>
+              ))}
             </Col>
           </Row>
         </Container>

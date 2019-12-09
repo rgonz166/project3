@@ -59,29 +59,40 @@ class BusinessInfo extends Component {
 
     }
 
+    // Create a new Vendor
     createVendor = () => {
         const menuObj = { menuName: this.state.storeName, food: [] };
+
+        // All Vendors need a Menu, create one and save it's _ID as ref for Vendor
         API.createMenu(menuObj)
             .then(reply => {
+
+                // Checking the ID and what type, should be ObjectId (MongoDB)
                 console.log("This is the reply: ", reply, reply.data._id);
                 console.log("Type of ID", typeof (reply.data._id));
-                let newVendor = {
-                    storeName: this.state.storeName,
-                    owner: this.state.owner,
-                    ownerId: this.state.auth0,
-                    location: [0, 0],
-                    status: false,
-                    categories: [this.state.categories],
-                    city: this.state.city ? this.state.city : '',
-                    state: this.state.state ? this.state.state : '',
-                    menu: reply.data._id
-                }
-                console.log("Object to be Submitted: ", newVendor);
-                API.createVendor(newVendor)
-                    .then(reply => {
-                        console.log(reply);
-                        this.setState({ status: 1 });
-                    }).catch(err => console.log("Vendor err: ", err));
+
+                API.createTweetTable({ tweet: [] })
+                    .then(table => {
+                        let newVendor = {
+                            storeName: this.state.storeName,
+                            owner: this.state.owner,
+                            ownerId: this.state.auth0,
+                            location: [0, 0],
+                            status: false,
+                            tweetTable: table.data._id,
+                            categories: [this.state.categories],
+                            city: this.state.city ? this.state.city : '',
+                            state: this.state.state ? this.state.state : '',
+                            menu: reply.data._id
+                        }
+                        console.log("Object to be Submitted: ", newVendor);
+                        API.createVendor(newVendor)
+                            .then(reply => {
+                                console.log(reply);
+                                this.setState({ status: 1 });
+                            }).catch(err => console.log("Vendor err: ", err));
+                    })
+
             }).catch(err => console.log(err));
     }
 
@@ -189,7 +200,7 @@ class BusinessInfo extends Component {
                 return <Redirect to='/menu' />
             case 2:
                 return (<div>
-                <Redirect to='/profile' /></div>)
+                    <Redirect to='/profile' /></div>)
         }
     }
 }
