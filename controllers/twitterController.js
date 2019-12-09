@@ -1,4 +1,5 @@
 // add twitter id to vendor object
+const db = require("../models");
 var Twit = require('twit');
 var T = new Twit({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -14,12 +15,25 @@ module.exports = {
             if (err) { throw err };
             console.log("data str");
             console.log(data.id_str);
-            res.json(data);
+            const tweetObj = {
+                tweetId: data.id_str,
+                body: data.text,
+                createdAt: data.created_at
+            }
+            db.Tweet.create(tweetObj)
+                .then(reply => {
+                    console.log("Created new Tweet to Tweet Collection", reply);
+                    res.json(reply);
+                })
+                .catch(err=>{
+                    console.log(err);
+                    res.json(err);
+                })
         })
     },
-    getTweet: function(req, res){
+    getTweet: function (req, res) {
         console.log("Stuff to grab: ", req.params.id, req.body);
-        T.get("statuses/show/:id", { id: req.params.id }, function( err, data, response){
+        T.get("statuses/show/:id", { id: req.params.id }, function (err, data, response) {
             if (err) throw err;
             const importantStuff = {
                 text: data.text,

@@ -2,6 +2,7 @@ module.exports = {
     Vendor: require("./vendor"),
     Menu: require("./menu"),
     Food: require("./food"),
-    Tweet: require("./tweet")
+    Tweet: require("./tweet"),
+    TweetTable: require("./tweetTable")
   };
   
