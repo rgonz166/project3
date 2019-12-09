@@ -60,10 +60,6 @@ const NavBar = () => {
       .catch(err => console.log(err));
   }
 
-  const CompanyLogo = () => {
-    return <img src="../assets/tortaLogo_transparent.png" alt="Mheels logo"></img>
-  }
-
   const logoutWithRedirect = () =>
     logout({
       returnTo: window.location.origin
@@ -108,13 +104,6 @@ const NavBar = () => {
                     </DropdownItem>
                     <DropdownItem
                       tag={RouterNavLink}
-                      to="/home"
-                      className="dropdown-profile"
-                    >
-                      <FontAwesomeIcon icon="server" className="mr-3" /> List
-                    </DropdownItem>
-                    <DropdownItem
-                      tag={RouterNavLink}
                       to="/twitter"
                       className="dropdown-profile"
                     >
@@ -127,7 +116,6 @@ const NavBar = () => {
                       {!storeOpen && (
                         <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Go Live</VendorGeo>)}
                     </DropdownItem>
-
                     <DropdownItem
                       tag={RouterNavLink}
                       to="/menu"
@@ -168,17 +156,8 @@ const NavBar = () => {
                   <FontAwesomeIcon icon="user" className="mr-3" />
                   <RouterNavLink
                     to="/profile"
-                    activeClassName="router-link-exact-active"
                   >
                     Profile
-                  </RouterNavLink>
-                </NavItem>
-                <NavItem>
-                  <FontAwesomeIcon icon="user" className="mr-3" />
-                  <RouterNavLink
-                    to="/home"
-                  >
-                    List
                   </RouterNavLink>
                 </NavItem>
                 <NavItem>
@@ -189,14 +168,12 @@ const NavBar = () => {
                     Social Media
                   </RouterNavLink>
                 </NavItem>
-
                 <NavItem>
                   {storeOpen && (
                     <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Close Up</VendorGeo>)}
                   {!storeOpen && (
                     <VendorGeo icon="map-marker-alt" func={shopStatus} className="mr-3">Go Live</VendorGeo>)}
                 </NavItem>
-
                 <NavItem>
                   <FontAwesomeIcon icon="utensils" className="mr-3" />
                   <RouterNavLink
